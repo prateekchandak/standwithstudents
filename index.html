@@ -825,14 +825,21 @@ async function loadWikiImage(img){
 }
 
 /* ---------- petition ---------- */
+/* Paste your Google Apps Script Web App URL between the quotes to save pledges to your Sheet. */
+const SHEET_ENDPOINT = "";
+
 function signPetition(){
   const n = document.getElementById("petName").value.trim();
   if(!n){ document.getElementById("petMsg").textContent = t("petErr"); return; }
   const c = (parseInt(localStorage.getItem("pledgeCount")||"0")+1);
   localStorage.setItem("pledgeCount", c);
+  const rec = { name:n, city:document.getElementById("petCity").value.trim(), contact:document.getElementById("petContact").value.trim(), lang:LANG, at:new Date().toISOString() };
   const sigs = JSON.parse(localStorage.getItem("signatures")||"[]");
-  sigs.push({ name:n, city:document.getElementById("petCity").value.trim(), contact:document.getElementById("petContact").value.trim(), at:new Date().toISOString() });
+  sigs.push(rec);
   localStorage.setItem("signatures", JSON.stringify(sigs));
+  if(SHEET_ENDPOINT){
+    fetch(SHEET_ENDPOINT, { method:"POST", headers:{"Content-Type":"text/plain;charset=utf-8"}, body:JSON.stringify(rec) }).catch(()=>{});
+  }
   document.getElementById("petMsg").textContent = t("petThanks")(n, c);
   document.getElementById("certName").value = n;
   updateCounts();
