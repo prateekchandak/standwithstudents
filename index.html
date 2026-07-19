@@ -150,6 +150,13 @@
 
   footer{border-top:1px solid var(--line); padding:2.2rem 0 3rem; color:var(--muted); font-size:.83rem; text-align:center;}
   footer p{max-width:720px; margin:0 auto .55rem;}
+
+  #toTop{position:fixed; right:20px; bottom:22px; z-index:40; width:46px; height:46px; border-radius:50%;
+    border:none; background:var(--primary); color:var(--on-primary); font-size:1.35rem; font-weight:700;
+    cursor:pointer; box-shadow:var(--shadow); opacity:0; pointer-events:none; transform:translateY(12px);
+    transition:opacity .25s, transform .25s;}
+  #toTop.show{opacity:1; pointer-events:auto; transform:translateY(0);}
+  #toTop:hover{filter:brightness(1.08);}
 </style>
 </head>
 <body>
@@ -227,11 +234,14 @@
 
 <footer>
   <div class="wrap">
+    <p><b data-i18n="fContactT"></b> <a href="mailto:contact@standwithstudents.org">contact@standwithstudents.org</a></p>
     <p><b data-i18n="fDiscT"></b> <span data-i18n="fDisc"></span></p>
     <p data-i18n="fPhotos"></p>
     <p data-i18n="fMade"></p>
   </div>
 </footer>
+
+<button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <script>
 /* ==========================================================================
@@ -275,6 +285,7 @@ const I18N = {
     fDiscT:"Disclaimer:",
     fDisc:'Statuses on this site reflect publicly available statements as verified by the site maintainers, with sources linked where available. "Silent" means we have not found a public statement — it is not a claim about anyone\'s private views. Corrections: contact the site admin. This is a peaceful, lawful call for consumer choice and free expression.',
     fPhotos:"Photos are loaded from Wikipedia / Wikimedia Commons and belong to their respective freely-licensed contributors.",
+    fContactT:"Contact / Corrections:",
     fMade:"Made by students, for students. ",
     certHead:"PLEDGE OF SOLIDARITY ", certSub:"with the students of India",
     certI:n=>`I, ${n},`, certPledge:v=>`pledge that I will not ${v}`,
@@ -319,6 +330,7 @@ const I18N = {
     fDiscT:"अस्वीकरण:",
     fDisc:'इस साइट पर दी गई स्थितियाँ सार्वजनिक रूप से उपलब्ध बयानों पर आधारित हैं, जहाँ संभव हो स्रोत लिंक किए गए हैं। "चुप हैं" का अर्थ केवल यह है कि हमें कोई सार्वजनिक बयान नहीं मिला — यह किसी के निजी विचारों के बारे में दावा नहीं है। सुधार के लिए साइट एडमिन से संपर्क करें। यह उपभोक्ता की पसंद और अभिव्यक्ति की स्वतंत्रता की शांतिपूर्ण, वैध अपील है।',
     fPhotos:"तस्वीरें विकिपीडिया / विकिमीडिया कॉमन्स से ली गई हैं और अपने-अपने मुक्त-लाइसेंस योगदानकर्ताओं की हैं।",
+    fContactT:"संपर्क / सुधार:",
     fMade:"छात्रों द्वारा, छात्रों के लिए। ",
     certHead:"एकजुटता का प्रण ", certSub:"भारत के छात्रों के साथ",
     certI:n=>`मैं, ${n},`, certPledge:v=>`प्रण लेता/लेती हूँ कि मैं ${v}`,
@@ -992,6 +1004,8 @@ async function shareCert(){
   });
 }
 document.getElementById("modal").addEventListener("click",e=>{ if(e.target.id==="modal") closeModal(); });
+
+window.addEventListener("scroll",()=>{ document.getElementById("toTop").classList.toggle("show", window.scrollY>500); });
 
 applyLang();
 </script>
