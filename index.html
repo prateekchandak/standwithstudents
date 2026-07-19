@@ -196,6 +196,7 @@
     <div class="pet-form">
       <input id="petName" type="text" maxlength="40">
       <input id="petCity" type="text" maxlength="30">
+      <input id="petContact" type="text" maxlength="60">
       <button class="btn btn-fill" onclick="signPetition()" data-i18n="petBtn"></button>
     </div>
     <div class="pet-count" id="petMsg"></div>
@@ -263,9 +264,12 @@ const I18N = {
     source:"🔗 Source", pledgeBtn:"Take the Pledge",
     petTitle:"Sign the Petition",
     petDesc:"Add your name in support of the students. Then click any public figure above to generate your personal pledge certificate and share it on social media.",
-    petName:"Your name", petCity:"Your city (optional)", petBtn:"Sign",
+    petName:"Your name", petCity:"Your city (optional)", petContact:"Email or phone (optional)", petBtn:"Sign",
     petErr:"Please enter your name.",
-    petThanks:(n,c)=>`Thank you, ${n}! You are signer #${c} on this device. Now generate your certificate above ⤴`,
+    petThanks:(n,c)=>`Thank you, ${n}! Your pledge certificate is ready — download it and share it everywhere.`,
+    mTitleGeneral:"Your pledge certificate",
+    certGBody:"pledge that I will not support any actor, influencer or famous personality",
+    certGUntil:"until they stand with the students of India.",
     mTitle:n=>`Pledge regarding ${n}`, mName:"Your name",
     mGen:"Generate Certificate", mDl:"⬇ Download", mShare:"📤 Share", mClose:"Close",
     fDiscT:"Disclaimer:",
@@ -304,9 +308,12 @@ const I18N = {
     source:"🔗 स्रोत", pledgeBtn:"प्रण लें",
     petTitle:"याचिका पर हस्ताक्षर करें",
     petDesc:"छात्रों के समर्थन में अपना नाम जोड़ें। फिर ऊपर किसी भी हस्ती पर क्लिक करके अपना प्रण-प्रमाणपत्र बनाएँ और सोशल मीडिया पर शेयर करें।",
-    petName:"आपका नाम", petCity:"आपका शहर (वैकल्पिक)", petBtn:"हस्ताक्षर करें",
+    petName:"आपका नाम", petCity:"आपका शहर (वैकल्पिक)", petContact:"ईमेल या फ़ोन (वैकल्पिक)", petBtn:"हस्ताक्षर करें",
     petErr:"कृपया अपना नाम लिखें।",
-    petThanks:(n,c)=>`धन्यवाद, ${n}! आप इस डिवाइस पर हस्ताक्षरकर्ता #${c} हैं। अब ऊपर अपना प्रमाणपत्र बनाएँ ⤴`,
+    petThanks:(n,c)=>`धन्यवाद, ${n}! आपका प्रण-प्रमाणपत्र तैयार है — डाउनलोड करें और हर जगह शेयर करें।`,
+    mTitleGeneral:"आपका प्रण-प्रमाणपत्र",
+    certGBody:"प्रण लेता/लेती हूँ कि मैं किसी भी अभिनेता, इन्फ्लुएंसर या मशहूर हस्ती का समर्थन नहीं करूँगा/करूँगी",
+    certGUntil:"जब तक वे भारत के छात्रों के साथ खड़े नहीं होते।",
     mTitle:n=>`${n} के बारे में प्रण`, mName:"आपका नाम",
     mGen:"प्रमाणपत्र बनाएँ", mDl:"⬇ डाउनलोड", mShare:"📤 शेयर", mClose:"बंद करें",
     fDiscT:"अस्वीकरण:",
@@ -697,6 +704,7 @@ function applyLang(){
   document.querySelectorAll("[data-i18n]").forEach(el=>{ el.textContent = t(el.dataset.i18n); });
   document.getElementById("petName").placeholder = t("petName");
   document.getElementById("petCity").placeholder = t("petCity");
+  document.getElementById("petContact").placeholder = t("petContact");
   document.getElementById("certName").placeholder = t("mName");
   document.getElementById("petMsg").textContent = "";
   renderTabs(); renderGrid(); renderAppreciation();
@@ -810,9 +818,19 @@ function signPetition(){
   if(!n){ document.getElementById("petMsg").textContent = t("petErr"); return; }
   const c = (parseInt(localStorage.getItem("pledgeCount")||"0")+1);
   localStorage.setItem("pledgeCount", c);
+  const sigs = JSON.parse(localStorage.getItem("signatures")||"[]");
+  sigs.push({ name:n, city:document.getElementById("petCity").value.trim(), contact:document.getElementById("petContact").value.trim(), at:new Date().toISOString() });
+  localStorage.setItem("signatures", JSON.stringify(sigs));
   document.getElementById("petMsg").textContent = t("petThanks")(n, c);
   document.getElementById("certName").value = n;
   updateCounts();
+  certPerson = { mode:"general" };
+  document.getElementById("modalTitle").textContent = t("mTitleGeneral");
+  document.getElementById("certCanvas").style.display="none";
+  document.getElementById("dlBtn").style.display="none";
+  document.getElementById("shareBtn").style.display="none";
+  document.getElementById("modal").classList.add("open");
+  makeCert();
 }
 
 /* ---------- certificate ---------- */
@@ -835,6 +853,7 @@ function makeCert(){
   const cv = document.getElementById("certCanvas"), x = cv.getContext("2d");
   const W=1080,H=1080;
   if(certPerson.mode==="thanks"){ makeThanksCert(x, W, H, user, cv); return; }
+  if(certPerson.mode==="general"){ makeGeneralCert(x, W, H, user, cv); return; }
   const bg = x.createLinearGradient(0,0,W,H);
   bg.addColorStop(0,"#101c33"); bg.addColorStop(1,"#131314");
   x.fillStyle=bg; x.fillRect(0,0,W,H);
@@ -861,6 +880,31 @@ function makeCert(){
   document.getElementById("dlBtn").style.display="block";
   if(navigator.share) document.getElementById("shareBtn").style.display="block";
 }
+function makeGeneralCert(x, W, H, user, cv){
+  const bg = x.createLinearGradient(0,0,W,H);
+  bg.addColorStop(0,"#101c33"); bg.addColorStop(1,"#131314");
+  x.fillStyle=bg; x.fillRect(0,0,W,H);
+  x.strokeStyle="#8ab4f8"; x.lineWidth=10; x.strokeRect(30,30,W-60,H-60);
+  x.textAlign="center"; x.fillStyle="#8ab4f8";
+  x.font="800 44px "+CFONT;
+  x.fillText(t("certHead").trim(), W/2, 150);
+  x.fillStyle="#9aa0a6"; x.font="400 28px "+CFONT;
+  x.fillText(t("certSub"), W/2, 202);
+  x.fillStyle="#e8eaed"; x.font="800 52px "+CFONT;
+  x.fillText(t("certI")(user), W/2, 340);
+  x.font="400 40px "+CFONT;
+  wrapText(x, t("certGBody"), W/2, 435, 900, 56);
+  wrapText(x, t("certGUntil"), W/2, 620, 900, 56);
+  x.fillStyle="#81c995"; x.font="800 42px "+CFONT;
+  x.fillText(t("certMotto"), W/2, 780);
+  x.fillStyle="#9aa0a6"; x.font="400 26px "+CFONT;
+  x.fillText(new Date().toLocaleDateString(LANG==="hi"?"hi-IN":"en-IN",{day:"numeric",month:"long",year:"numeric"}), W/2, 880);
+  x.fillText(t("certTag"), W/2, 935);
+  cv.style.display="block";
+  document.getElementById("dlBtn").style.display="block";
+  if(navigator.share) document.getElementById("shareBtn").style.display="block";
+}
+
 function makeThanksCert(x, W, H, user, cv){
   const bg = x.createLinearGradient(0,0,W,H);
   bg.addColorStop(0,"#0f2618"); bg.addColorStop(1,"#131314");
