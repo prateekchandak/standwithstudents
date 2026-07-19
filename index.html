@@ -12,7 +12,7 @@
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Noto+Sans+Devanagari:wght@400;500;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Noto+Sans+Devanagari:wght@400;500;600;800&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#131314; --surface:#1e1f20; --surface2:#28292a; --line:#2b2d30;
@@ -847,91 +847,126 @@ function openModal(idx){
 }
 function closeModal(){ document.getElementById("modal").classList.remove("open"); }
 
-const CFONT = "'Inter','Noto Sans Devanagari','Segoe UI',sans-serif";
+const SERIF = "'Playfair Display',Georgia,'Noto Sans Devanagari',serif";
+const CERT = { navy:"#1c2a52", gold:"#c9a227", ink:"#33333c", faded:"#6b6353", green:"#0e6b2e", chakra:"#000080" };
+
+function royalBase(x, W, H, title, sub){
+  let g = x.createLinearGradient(0,0,0,H);
+  g.addColorStop(0,"#fdf9ee"); g.addColorStop(.55,"#f9f1dd"); g.addColorStop(1,"#f3e9d0");
+  x.fillStyle=g; x.fillRect(0,0,W,H);
+  let v = x.createRadialGradient(W/2,H/2,300,W/2,H/2,760);
+  v.addColorStop(0,"rgba(0,0,0,0)"); v.addColorStop(1,"rgba(120,90,30,.10)");
+  x.fillStyle=v; x.fillRect(0,0,W,H);
+  // Ashoka Chakra watermark
+  x.save(); x.strokeStyle="rgba(0,0,128,.07)"; x.lineWidth=3;
+  x.beginPath(); x.arc(W/2,H/2,240,0,Math.PI*2); x.stroke();
+  x.beginPath(); x.arc(W/2,H/2,34,0,Math.PI*2); x.stroke();
+  for(let i=0;i<24;i++){ const a=i*Math.PI/12;
+    x.beginPath(); x.moveTo(W/2+34*Math.cos(a),H/2+34*Math.sin(a));
+    x.lineTo(W/2+240*Math.cos(a),H/2+240*Math.sin(a)); x.stroke(); }
+  x.restore();
+  // double frame: navy, gold, hairline
+  x.strokeStyle=CERT.navy; x.lineWidth=14; x.strokeRect(28,28,W-56,H-56);
+  x.strokeStyle=CERT.gold; x.lineWidth=3;  x.strokeRect(52,52,W-104,H-104);
+  x.strokeStyle=CERT.navy; x.lineWidth=1.5; x.strokeRect(62,62,W-124,H-124);
+  x.fillStyle=CERT.gold;
+  [[52,52],[W-52,52],[52,H-52],[W-52,H-52]].forEach(c=>{
+    x.save(); x.translate(c[0],c[1]); x.rotate(Math.PI/4); x.fillRect(-9,-9,18,18); x.restore(); });
+  // tricolor ribbons
+  const rx=86, rw=W-172;
+  x.fillStyle="#FF9933"; x.fillRect(rx,84,rw,9);
+  x.fillStyle="#ffffff"; x.fillRect(rx,93,rw,9);
+  x.fillStyle="#138808"; x.fillRect(rx,102,rw,9);
+  x.fillStyle="#FF9933"; x.fillRect(rx,H-111,rw,9);
+  x.fillStyle="#ffffff"; x.fillRect(rx,H-102,rw,9);
+  x.fillStyle="#138808"; x.fillRect(rx,H-93,rw,9);
+  // heading
+  x.textAlign="center";
+  x.fillStyle=CERT.navy; x.font="700 50px "+SERIF;
+  x.fillText(title, W/2, 208);
+  goldRule(x, W/2, 240, 300);
+  x.fillStyle="#8a6d1d"; x.font="italic 400 28px "+SERIF;
+  x.fillText(sub, W/2, 290);
+}
+function goldRule(x, cx, y, half){
+  x.strokeStyle=CERT.gold; x.lineWidth=2;
+  x.beginPath(); x.moveTo(cx-half,y); x.lineTo(cx-16,y); x.moveTo(cx+16,y); x.lineTo(cx+half,y); x.stroke();
+  x.save(); x.translate(cx,y); x.rotate(Math.PI/4); x.fillStyle=CERT.gold; x.fillRect(-7,-7,14,14); x.restore();
+}
+function drawSeal(x, cx, cy, r){
+  x.save();
+  x.strokeStyle=CERT.gold; x.lineWidth=5; x.beginPath(); x.arc(cx,cy,r,0,Math.PI*2); x.stroke();
+  x.lineWidth=2; x.beginPath(); x.arc(cx,cy,r-9,0,Math.PI*2); x.stroke();
+  x.strokeStyle=CERT.chakra; x.lineWidth=2;
+  x.beginPath(); x.arc(cx,cy,r-24,0,Math.PI*2); x.stroke();
+  x.beginPath(); x.arc(cx,cy,7,0,Math.PI*2); x.stroke();
+  for(let i=0;i<24;i++){ const a=i*Math.PI/12;
+    x.beginPath(); x.moveTo(cx+7*Math.cos(a),cy+7*Math.sin(a));
+    x.lineTo(cx+(r-24)*Math.cos(a),cy+(r-24)*Math.sin(a)); x.stroke(); }
+  x.restore();
+}
+function certFinish(x, W, H, cv){
+  x.fillStyle=CERT.faded; x.font="400 25px "+SERIF; x.textAlign="left";
+  x.fillText(new Date().toLocaleDateString(LANG==="hi"?"hi-IN":"en-IN",{day:"numeric",month:"long",year:"numeric"}), 120, H-160);
+  x.strokeStyle="#b5a878"; x.lineWidth=1.5;
+  x.beginPath(); x.moveTo(120,H-192); x.lineTo(400,H-192); x.stroke();
+  x.font="italic 400 22px "+SERIF; x.fillText(t("certTag"), 120, H-208+0);
+  drawSeal(x, W-200, H-215, 62);
+  x.textAlign="center";
+  cv.style.display="block";
+  document.getElementById("dlBtn").style.display="block";
+  if(navigator.share) document.getElementById("shareBtn").style.display="block";
+}
+
 function makeCert(){
   const user = document.getElementById("certName").value.trim() || t("anon");
   const cv = document.getElementById("certCanvas"), x = cv.getContext("2d");
   const W=1080,H=1080;
   if(certPerson.mode==="thanks"){ makeThanksCert(x, W, H, user, cv); return; }
   if(certPerson.mode==="general"){ makeGeneralCert(x, W, H, user, cv); return; }
-  const bg = x.createLinearGradient(0,0,W,H);
-  bg.addColorStop(0,"#101c33"); bg.addColorStop(1,"#131314");
-  x.fillStyle=bg; x.fillRect(0,0,W,H);
-  x.strokeStyle="#8ab4f8"; x.lineWidth=10; x.strokeRect(30,30,W-60,H-60);
-  x.textAlign="center"; x.fillStyle="#8ab4f8";
-  x.font="800 44px "+CFONT;
-  x.fillText(t("certHead"), W/2, 150);
-  x.fillStyle="#9aa0a6"; x.font="400 28px "+CFONT;
-  x.fillText(t("certSub"), W/2, 202);
-  x.fillStyle="#e8eaed"; x.font="800 52px "+CFONT;
-  x.fillText(t("certI")(user), W/2, 340);
-  x.font="400 38px "+CFONT;
-  wrapText(x, t("certPledge")(certPerson.verb), W/2, 432, 900, 54);
-  x.fillStyle="#8ab4f8"; x.font="800 60px "+CFONT;
-  x.fillText(certPerson.name, W/2, 575);
-  x.fillStyle="#e8eaed"; x.font="400 38px "+CFONT;
-  wrapText(x, t("certUntil"), W/2, 665, 900, 54);
-  x.fillStyle="#81c995"; x.font="800 42px "+CFONT;
-  x.fillText(t("certMotto"), W/2, 805);
-  x.fillStyle="#9aa0a6"; x.font="400 26px "+CFONT;
-  x.fillText(new Date().toLocaleDateString(LANG==="hi"?"hi-IN":"en-IN",{day:"numeric",month:"long",year:"numeric"}), W/2, 890);
-  x.fillText(t("certTag"), W/2, 940);
-  cv.style.display="block";
-  document.getElementById("dlBtn").style.display="block";
-  if(navigator.share) document.getElementById("shareBtn").style.display="block";
+  royalBase(x, W, H, t("certHead").trim(), t("certSub"));
+  x.fillStyle=CERT.navy; x.font="700 44px "+SERIF;
+  x.fillText(t("certI")(user), W/2, 400);
+  x.fillStyle=CERT.ink; x.font="400 34px "+SERIF;
+  wrapText(x, t("certPledge")(certPerson.verb), W/2, 465, 860, 48);
+  x.fillStyle=CERT.navy; x.font="700 56px "+SERIF;
+  x.fillText(certPerson.name, W/2, 610);
+  goldRule(x, W/2, 640, 220);
+  x.fillStyle=CERT.ink; x.font="400 34px "+SERIF;
+  wrapText(x, t("certUntil"), W/2, 700, 860, 48);
+  x.fillStyle=CERT.green; x.font="700 34px "+SERIF;
+  x.fillText(t("certMotto"), W/2, 810);
+  certFinish(x, W, H, cv);
 }
+
 function makeGeneralCert(x, W, H, user, cv){
-  const bg = x.createLinearGradient(0,0,W,H);
-  bg.addColorStop(0,"#101c33"); bg.addColorStop(1,"#131314");
-  x.fillStyle=bg; x.fillRect(0,0,W,H);
-  x.strokeStyle="#8ab4f8"; x.lineWidth=10; x.strokeRect(30,30,W-60,H-60);
-  x.textAlign="center"; x.fillStyle="#8ab4f8";
-  x.font="800 44px "+CFONT;
-  x.fillText(t("certHead").trim(), W/2, 150);
-  x.fillStyle="#9aa0a6"; x.font="400 28px "+CFONT;
-  x.fillText(t("certSub"), W/2, 202);
-  x.fillStyle="#e8eaed"; x.font="800 52px "+CFONT;
-  x.fillText(t("certI")(user), W/2, 340);
-  x.font="400 40px "+CFONT;
-  wrapText(x, t("certGBody"), W/2, 435, 900, 56);
-  wrapText(x, t("certGUntil"), W/2, 620, 900, 56);
-  x.fillStyle="#81c995"; x.font="800 42px "+CFONT;
-  x.fillText(t("certMotto"), W/2, 780);
-  x.fillStyle="#9aa0a6"; x.font="400 26px "+CFONT;
-  x.fillText(new Date().toLocaleDateString(LANG==="hi"?"hi-IN":"en-IN",{day:"numeric",month:"long",year:"numeric"}), W/2, 880);
-  x.fillText(t("certTag"), W/2, 935);
-  cv.style.display="block";
-  document.getElementById("dlBtn").style.display="block";
-  if(navigator.share) document.getElementById("shareBtn").style.display="block";
+  royalBase(x, W, H, t("certHead").trim(), t("certSub"));
+  x.fillStyle=CERT.navy; x.font="700 44px "+SERIF;
+  x.fillText(t("certI")(user), W/2, 405);
+  x.fillStyle=CERT.ink; x.font="400 36px "+SERIF;
+  wrapText(x, t("certGBody"), W/2, 475, 860, 52);
+  wrapText(x, t("certGUntil"), W/2, 645, 860, 52);
+  x.fillStyle=CERT.green; x.font="700 34px "+SERIF;
+  x.fillText(t("certMotto"), W/2, 790);
+  certFinish(x, W, H, cv);
 }
 
 function makeThanksCert(x, W, H, user, cv){
-  const bg = x.createLinearGradient(0,0,W,H);
-  bg.addColorStop(0,"#0f2618"); bg.addColorStop(1,"#131314");
-  x.fillStyle=bg; x.fillRect(0,0,W,H);
-  x.strokeStyle="#81c995"; x.lineWidth=10; x.strokeRect(30,30,W-60,H-60);
-  x.textAlign="center"; x.fillStyle="#81c995";
-  x.font="800 42px "+CFONT;
-  x.fillText(t("certTHead"), W/2, 150);
-  x.fillStyle="#9aa0a6"; x.font="400 28px "+CFONT;
-  x.fillText(t("certSub"), W/2, 202);
-  x.fillStyle="#e8eaed"; x.font="400 36px "+CFONT;
-  x.fillText(t("certTPresented"), W/2, 350);
-  x.fillStyle="#81c995"; x.font="800 66px "+CFONT;
-  x.fillText(certPerson.name, W/2, 460);
-  x.fillStyle="#e8eaed"; x.font="400 38px "+CFONT;
-  wrapText(x, t("certTFor"), W/2, 560, 900, 54);
-  x.fillStyle="#fdd663"; x.font="800 40px "+CFONT;
-  wrapText(x, t("certTMotto"), W/2, 700, 940, 54);
-  x.fillStyle="#9aa0a6"; x.font="400 27px "+CFONT;
-  x.fillText(t("certTFrom")(user), W/2, 840);
-  x.font="400 25px "+CFONT;
-  x.fillText(new Date().toLocaleDateString(LANG==="hi"?"hi-IN":"en-IN",{day:"numeric",month:"long",year:"numeric"}), W/2, 900);
-  x.fillText(t("certTag"), W/2, 945);
-  cv.style.display="block";
-  document.getElementById("dlBtn").style.display="block";
-  if(navigator.share) document.getElementById("shareBtn").style.display="block";
+  royalBase(x, W, H, t("certTHead").trim(), t("certSub"));
+  x.fillStyle=CERT.ink; x.font="italic 400 34px "+SERIF;
+  x.fillText(t("certTPresented"), W/2, 400);
+  x.fillStyle=CERT.navy; x.font="700 62px "+SERIF;
+  x.fillText(certPerson.name, W/2, 495);
+  goldRule(x, W/2, 527, 260);
+  x.fillStyle=CERT.ink; x.font="400 36px "+SERIF;
+  wrapText(x, t("certTFor"), W/2, 590, 860, 50);
+  x.fillStyle=CERT.green; x.font="700 34px "+SERIF;
+  wrapText(x, t("certTMotto"), W/2, 700, 900, 48);
+  x.fillStyle=CERT.faded; x.font="italic 400 27px "+SERIF;
+  x.fillText(t("certTFrom")(user), W/2, 800);
+  certFinish(x, W, H, cv);
 }
+if(document.fonts && document.fonts.load){ document.fonts.load("700 50px 'Playfair Display'"); document.fonts.load("italic 400 28px 'Playfair Display'"); }
 
 function wrapText(x, text, cx, y, maxW, lh){
   const words = text.split(" "); let line="", yy=y;
