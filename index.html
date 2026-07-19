@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Awaaz Uthao — Who Stands With The Students?</title>
+<meta name="description" content="Tracking which public figures have spoken up for the student protests. If they don't stand with us, we won't stand with them.">
+<meta property="og:title" content="Who Stands With The Students?">
+<meta property="og:description" content="If they are not supporting us, we will not support them. Take the pledge and share it. #StandWithStudents">
+<meta property="og:url" content="https://standwithstudents.org">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=Noto+Sans+Devanagari:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#131314; --surface:#1e1f20; --surface2:#28292a; --line:#2b2d30;
+    --text:#e8eaed; --muted:#9aa0a6; --outline:#444746;
+    --primary:#8ab4f8; --primary2:#c58af9; --on-primary:#062e6f;
+    --green:#81c995; --red:#f28b82; --amber:#fdd663;
+    --radius:20px;
+    --bar:rgba(19,19,20,.88); --badge-bg:rgba(15,15,16,.72);
+    --glow:rgba(138,180,248,.10); --pet-grad:linear-gradient(140deg,#1b2437 0%,#1e1f20 60%);
+    --input-bg:rgba(19,19,20,.6); --shadow:0 14px 40px rgba(0,0,0,.45);
+    --bgimg-op:.08;
+  }
+  :root[data-theme="light"]{
+    --bg:#ffffff; --surface:#f8f9fa; --surface2:#f1f3f4; --line:#e8eaed;
+    --text:#202124; --muted:#5f6368; --outline:#dadce0;
+    --primary:#1a73e8; --primary2:#9334e6; --on-primary:#ffffff;
+    --green:#188038; --red:#d93025; --amber:#b06000;
+    --bar:rgba(255,255,255,.88); --badge-bg:rgba(255,255,255,.82);
+    --glow:rgba(26,115,232,.07); --pet-grad:linear-gradient(140deg,#e8f0fe 0%,#f8f9fa 60%);
+    --input-bg:#ffffff; --shadow:0 14px 40px rgba(60,64,67,.18);
+    --bgimg-op:.16;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg); color:var(--text); line-height:1.55;
+    font-family:"Inter","Noto Sans Devanagari","Segoe UI",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;}
+  body::before{content:""; position:fixed; inset:0; z-index:-1;
+    background:radial-gradient(900px 420px at 50% -80px, var(--glow), transparent 70%);}
+  body::after{content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
+    opacity:var(--bgimg-op);
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900' preserveAspectRatio='xMidYMid slice'><defs><filter id='b' x='-10%25' y='-10%25' width='120%25' height='120%25'><feGaussianBlur stdDeviation='24'/></filter></defs><g filter='url(%23b)'><rect width='1600' height='320' fill='%23FF9933'/><rect y='320' width='1600' height='280' fill='%23ffffff'/><rect y='600' width='1600' height='300' fill='%23138808'/><circle cx='800' cy='460' r='95' fill='none' stroke='%23000080' stroke-width='16'/><g fill='%23293042'><circle cx='140' cy='700' r='34'/><rect x='90' y='736' width='100' height='180' rx='50'/><circle cx='330' cy='720' r='30'/><rect x='285' y='752' width='90' height='160' rx='45'/><circle cx='520' cy='695' r='36'/><rect x='466' y='733' width='108' height='180' rx='54'/><circle cx='710' cy='725' r='28'/><rect x='668' y='755' width='84' height='150' rx='42'/><circle cx='900' cy='700' r='34'/><rect x='850' y='736' width='100' height='175' rx='50'/><circle cx='1090' cy='720' r='30'/><rect x='1045' y='752' width='90' height='160' rx='45'/><circle cx='1280' cy='698' r='35'/><rect x='1228' y='735' width='104' height='178' rx='52'/><circle cx='1460' cy='722' r='29'/><rect x='1416' y='753' width='88' height='155' rx='44'/></g><g><rect x='250' y='500' width='7' height='210' fill='%23444'/><rect x='257' y='500' width='120' height='26' fill='%23FF9933'/><rect x='257' y='526' width='120' height='26' fill='%23ffffff'/><rect x='257' y='552' width='120' height='26' fill='%23138808'/><rect x='640' y='470' width='7' height='240' fill='%23444'/><rect x='647' y='470' width='130' height='28' fill='%23FF9933'/><rect x='647' y='498' width='130' height='28' fill='%23ffffff'/><rect x='647' y='526' width='130' height='28' fill='%23138808'/><rect x='1030' y='490' width='7' height='225' fill='%23444'/><rect x='1037' y='490' width='125' height='27' fill='%23FF9933'/><rect x='1037' y='517' width='125' height='27' fill='%23ffffff'/><rect x='1037' y='544' width='125' height='27' fill='%23138808'/><rect x='1380' y='510' width='7' height='205' fill='%23444'/><rect x='1387' y='510' width='115' height='25' fill='%23FF9933'/><rect x='1387' y='535' width='115' height='25' fill='%23ffffff'/><rect x='1387' y='560' width='115' height='25' fill='%23138808'/></g></g></svg>") center/cover no-repeat;}
+  a{color:var(--primary); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:1240px; margin:0 auto; padding:0 1.25rem;}
+
+  /* ---------- top bar ---------- */
+  .topbar{position:sticky; top:0; z-index:30; background:var(--bar); backdrop-filter:blur(14px); border-bottom:1px solid var(--line);}
+  .topbar-in{display:flex; align-items:center; justify-content:space-between; height:60px;}
+  .brand{font-size:1.02rem; font-weight:600; color:var(--text); letter-spacing:.2px; display:flex; align-items:center; gap:.55rem;}
+  .brand .fist{font-size:1.25rem;}
+  .brand .dot{color:var(--primary);}
+  .lang-toggle{display:flex; border:1px solid var(--outline); border-radius:999px; overflow:hidden;}
+  .lang-toggle button{background:transparent; border:none; color:var(--muted); padding:.45rem 1.05rem; font-size:.85rem; font-weight:600; cursor:pointer; font-family:inherit;}
+  .lang-toggle button.active{background:var(--primary); color:var(--on-primary);}
+  .nav-link{color:var(--text); font-size:.87rem; font-weight:600; text-decoration:none; white-space:nowrap;}
+  .nav-link:hover{color:var(--green); text-decoration:none;}
+  section.appr{margin-bottom:2.5rem; scroll-margin-top:70px;}
+
+  /* ---------- hero ---------- */
+  .hero{text-align:center; padding:4.8rem 1rem 3rem;}
+  .overline{display:inline-flex; align-items:center; gap:.5rem; font-size:.82rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--primary); background:rgba(138,180,248,.1); border:1px solid rgba(138,180,248,.25); padding:.45rem 1.1rem; border-radius:999px;}
+  .hero h1{margin-top:1.4rem; font-size:clamp(2.3rem,6vw,4.1rem); font-weight:800; letter-spacing:-.03em; line-height:1.08;}
+  .hero h1 span{background:linear-gradient(92deg,var(--primary),var(--primary2)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .hero .tagline{margin:1.1rem auto 0; font-size:clamp(1.05rem,2.4vw,1.3rem); color:var(--text); font-weight:600; max-width:760px;}
+  .hero .msg{margin:.9rem auto 0; font-size:clamp(.95rem,2vw,1.08rem); color:var(--muted); max-width:720px;}
+  .cta{display:flex; gap:.8rem; justify-content:center; margin-top:2rem; flex-wrap:wrap;}
+  .btn{display:inline-flex; align-items:center; gap:.5rem; padding:.85rem 1.9rem; border-radius:999px; font-size:1rem; font-weight:600; font-family:inherit; cursor:pointer; border:none; transition:transform .18s, filter .18s;}
+  .btn-fill{background:var(--primary); color:var(--on-primary);}
+  .btn-fill:hover{filter:brightness(1.1); transform:translateY(-1px);}
+  .btn-line{background:transparent; color:var(--primary); border:1px solid var(--outline);}
+  .btn-line:hover{background:var(--surface2);}
+  .counts{display:flex; gap:2.6rem; justify-content:center; margin-top:3rem; flex-wrap:wrap;}
+  .count-card{text-align:center; min-width:100px;}
+  .count-card .num{font-size:2.3rem; font-weight:800; letter-spacing:-.02em;}
+  .count-card .lbl{font-size:.76rem; color:var(--muted); margin-top:.15rem; letter-spacing:.08em; text-transform:uppercase; font-weight:600;}
+  .num.green{color:var(--green);} .num.red{color:var(--red);} .num.amber{color:var(--amber);} .num.blue{color:var(--primary);}
+
+  /* ---------- appreciation wall ---------- */
+  section.appr{text-align:center; padding:1.6rem 0 .4rem;}
+  section.appr h2{font-size:clamp(1.45rem,3.2vw,2rem); font-weight:800; letter-spacing:-.02em; color:var(--green);}
+  section.appr > .wrap > p{color:var(--muted); margin-top:.45rem; max-width:640px; margin-left:auto; margin-right:auto;}
+  .appr-row{display:flex; gap:1rem; overflow-x:auto; padding:1.5rem .2rem 1rem; scrollbar-width:thin;}
+  .appr-card{flex:0 0 255px; background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--green); border-radius:var(--radius); overflow:hidden; text-align:left; transition:transform .2s, box-shadow .2s;}
+  .appr-card:hover{transform:translateY(-3px); box-shadow:var(--shadow);}
+  .appr-photo{height:150px; position:relative; overflow:hidden; background:var(--surface2); display:flex; align-items:center; justify-content:center; font-size:2.2rem; font-weight:800;}
+  .appr-photo img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 18%; opacity:0; transition:opacity .4s;}
+  .appr-photo img.loaded{opacity:1;}
+  .appr-photo .badge{top:8px; right:8px;}
+  .appr-body{padding:.85rem 1rem 1rem;}
+  .appr-name{font-weight:700; font-size:.98rem;}
+  .appr-note{font-size:.8rem; color:var(--muted); margin-top:.3rem; line-height:1.45;}
+  .appr-body a{display:inline-block; font-size:.76rem; margin-top:.45rem;}
+
+  /* ---------- chips ---------- */
+  nav.tabs{position:sticky; top:60px; z-index:20; background:var(--bar); backdrop-filter:blur(14px); padding:.85rem 0; border-bottom:1px solid var(--line);}
+  .tabs-in{display:flex; gap:.55rem; overflow-x:auto; scrollbar-width:none; padding:2px;}
+  .tabs-in::-webkit-scrollbar{display:none;}
+  .tab{flex:0 0 auto; border:1px solid var(--outline); background:transparent; color:var(--text); padding:.52rem 1.1rem; border-radius:999px; cursor:pointer; font-size:.88rem; font-weight:500; font-family:inherit; transition:background .15s,color .15s,border-color .15s;}
+  .tab:hover{background:var(--surface2);}
+  .tab.active{background:var(--primary); border-color:var(--primary); color:var(--on-primary); font-weight:600;}
+
+  /* ---------- grid ---------- */
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(228px,1fr)); gap:1.15rem; margin:1.6rem 0 3.5rem;}
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; transition:transform .2s, box-shadow .2s, border-color .2s; display:flex; flex-direction:column;}
+  .card:hover{transform:translateY(-4px); border-color:var(--outline); box-shadow:var(--shadow);}
+  .avatar{height:205px; display:flex; align-items:center; justify-content:center; font-size:3rem; font-weight:800; position:relative; overflow:hidden;}
+  .avatar img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 18%; opacity:0; transition:opacity .4s;}
+  .avatar img.loaded{opacity:1;}
+  .badge{position:absolute; top:10px; right:10px; z-index:2; display:inline-flex; align-items:center; gap:.3rem; font-size:.72rem; font-weight:600; padding:.3rem .65rem; border-radius:999px; background:var(--badge-bg); backdrop-filter:blur(6px);}
+  .badge.yes{color:var(--green);} .badge.no{color:var(--red);} .badge.unknown{color:var(--amber);}
+  .card .body{padding:1rem 1.1rem 1.15rem; display:flex; flex-direction:column; flex:1;}
+  .card .name{font-weight:600; font-size:1.03rem; letter-spacing:-.01em;}
+  .card .role{font-size:.8rem; color:var(--muted); margin-top:.12rem;}
+  .src{display:block; margin-top:.4rem; font-size:.75rem;}
+  .pledge-btn{margin-top:auto; padding-top:.85rem;}
+  .pledge-btn button{width:100%; background:transparent; border:1px solid var(--outline); color:var(--primary); padding:.55rem; border-radius:999px; cursor:pointer; font-weight:600; font-size:.85rem; font-family:inherit; transition:.15s;}
+  .pledge-btn button:hover{background:var(--primary); border-color:var(--primary); color:var(--on-primary);}
+  .pledge-btn button.thank{color:var(--green);}
+  .pledge-btn button.thank:hover{background:var(--green); border-color:var(--green); color:#0b2b16;}
+  .appr-body button{width:100%; margin-top:.55rem; background:transparent; border:1px solid var(--outline); color:var(--green); padding:.45rem; border-radius:999px; cursor:pointer; font-weight:600; font-size:.78rem; font-family:inherit;}
+  .appr-body button:hover{background:var(--green); border-color:var(--green); color:#0b2b16;}
+
+  /* ---------- petition ---------- */
+  section.petition{position:relative; overflow:hidden; background:var(--pet-grad); border:1px solid var(--line); border-radius:28px; padding:3rem 2rem; margin:1rem 0 3.5rem; text-align:center;}
+  section.petition h2{font-size:clamp(1.5rem,3.4vw,2rem); font-weight:800; letter-spacing:-.02em;}
+  section.petition p{color:var(--muted); margin:0.7rem auto 1.6rem; max-width:640px;}
+  .pet-form{display:flex; gap:.7rem; flex-wrap:wrap; justify-content:center;}
+  .pet-form input{flex:1 1 220px; max-width:300px; padding:.85rem 1.2rem; border-radius:999px; border:1px solid var(--outline); background:var(--input-bg); color:var(--text); font-size:.95rem; font-family:inherit;}
+  .pet-form input:focus{outline:2px solid var(--primary); border-color:transparent;}
+  .pet-count{margin-top:1.1rem; font-weight:600; color:var(--green);}
+
+  /* ---------- modal ---------- */
+  .modal{position:fixed; inset:0; background:rgba(0,0,0,.74); display:none; align-items:center; justify-content:center; z-index:50; padding:1rem;}
+  .modal.open{display:flex;}
+  .modal-box{background:var(--surface); border:1px solid var(--line); border-radius:24px; padding:1.8rem; max-width:560px; width:100%; max-height:92vh; overflow:auto;}
+  .modal-box h3{margin-bottom:1rem; font-weight:700; letter-spacing:-.01em;}
+  .modal-box input{width:100%; padding:.8rem 1.15rem; border-radius:999px; border:1px solid var(--outline); background:var(--bg); color:var(--text); font-size:.95rem; margin-bottom:1rem; font-family:inherit;}
+  .modal-actions{display:flex; gap:.6rem; flex-wrap:wrap;}
+  .modal-actions button{flex:1; padding:.72rem 1rem; border-radius:999px; border:none; font-weight:600; cursor:pointer; font-size:.9rem; font-family:inherit; white-space:nowrap;}
+  .btn-primary{background:var(--primary); color:var(--on-primary);}
+  .btn-ghost{background:transparent; color:var(--text); border:1px solid var(--outline) !important;}
+  .btn-ghost:hover{background:var(--surface2);}
+  #certCanvas{width:100%; border-radius:16px; margin:.2rem 0 1rem; display:none;}
+
+  footer{border-top:1px solid var(--line); padding:2.2rem 0 3rem; color:var(--muted); font-size:.83rem; text-align:center;}
+  footer p{max-width:720px; margin:0 auto .55rem;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap topbar-in">
+    <div class="brand"><span class="fist">✊</span> <span data-i18n="brand">StandWithStudents</span><span class="dot">.</span></div>
+    <div style="display:flex; align-items:center; gap:.9rem;">
+      <a href="#appr" class="nav-link" data-i18n="apprLink"></a>
+      <button id="themeBtn" onclick="toggleTheme()" title="Theme" style="background:transparent; border:1px solid var(--outline); border-radius:999px; width:38px; height:38px; cursor:pointer; font-size:1.05rem; line-height:1; color:var(--text);">🌙</button>
+      <div class="lang-toggle">
+        <button id="btnEn" onclick="setLang('en')">EN</button>
+        <button id="btnHi" onclick="setLang('hi')">हिंदी</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="overline" data-i18n="overline"></span>
+    <h1 id="heroTitle"></h1>
+    <p class="tagline" id="heroTag"></p>
+    <p class="msg" id="heroMsg"></p>
+    <div class="cta">
+      <button class="btn btn-fill" onclick="document.getElementById('petition').scrollIntoView()" data-i18n="ctaPledge"></button>
+      <button class="btn btn-line" onclick="shareSite(this)" data-i18n="ctaShare"></button>
+    </div>
+    <div class="counts">
+      <div class="count-card"><div class="num green" id="cYes">0</div><div class="lbl" data-i18n="spokeUp"></div></div>
+      <div class="count-card"><div class="num red" id="cNo">0</div><div class="lbl" data-i18n="silent"></div></div>
+      <div class="count-card"><div class="num blue" id="cPledge">0</div><div class="lbl" data-i18n="pledges"></div></div>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs"><div class="wrap"><div class="tabs-in" id="tabs"></div></div></nav>
+
+<div class="wrap">
+  <div class="grid" id="grid"></div>
+
+  <section class="petition" id="petition">
+    <h2 data-i18n="petTitle"></h2>
+    <p data-i18n="petDesc"></p>
+    <div class="pet-form">
+      <input id="petName" type="text" maxlength="40">
+      <input id="petCity" type="text" maxlength="30">
+      <button class="btn btn-fill" onclick="signPetition()" data-i18n="petBtn"></button>
+    </div>
+    <div class="pet-count" id="petMsg"></div>
+  </section>
+</div>
+
+<section class="appr" id="appr">
+  <div class="wrap">
+    <h2 data-i18n="apprTitle"></h2>
+    <p data-i18n="apprDesc"></p>
+    <div class="appr-row" id="apprRow"></div>
+  </div>
+</section>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <h3 id="modalTitle"></h3>
+    <input id="certName" type="text" maxlength="40">
+    <canvas id="certCanvas" width="1080" height="1080"></canvas>
+    <div class="modal-actions">
+      <button class="btn-primary" onclick="makeCert()" data-i18n="mGen"></button>
+      <button class="btn-ghost" id="dlBtn" style="display:none" onclick="downloadCert()" data-i18n="mDl"></button>
+      <button class="btn-ghost" id="shareBtn" style="display:none" onclick="shareCert()" data-i18n="mShare"></button>
+      <button class="btn-ghost" onclick="closeModal()" data-i18n="mClose"></button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p><b data-i18n="fDiscT"></b> <span data-i18n="fDisc"></span></p>
+    <p data-i18n="fPhotos"></p>
+    <p data-i18n="fMade"></p>
+  </div>
+</footer>
+
+<script>
+/* ==========================================================================
+   LANGUAGE STRINGS
+   ========================================================================== */
+const I18N = {
+  en: {
+    brand:"StandWithStudents",
+    overline:"✊ A movement by students, for students",
+    heroTitle:'Who Stands With <span>The Students?</span>',
+    heroTag:"Let's not consume their content or support their businesses — until they stand with us.",
+    heroMsg:"They earn from our views, our tickets, our follows and our wallets. Take the pledge below, generate your certificate, and share it — every share makes this movement bigger.",
+    ctaPledge:"✍ Take the Pledge", ctaShare:"📤 Share the Movement",
+    shareText:"Who stands with the students? Take the pledge and share it. #StandWithStudents",
+    copied:"Link copied! Paste it anywhere to share.",
+    spokeUp:"Supported", silent:"Not Yet", notVerified:"Unverified", pledges:"Pledges",
+    all:"All",
+    stYes:"Supported", stNo:"Not supported yet", stUnknown:"Not verified",
+    apprTitle:"🙏 Wall of Appreciation",
+    apprDesc:"These voices stood with the students and Sonam Wangchuk. Thank you — we see you.",
+    apprSrc:"View source →",
+    apprLink:"🙏 Supporters",
+    thankBtn:"🙏 Thank you for supporting",
+    mTitleThanks:n=>`Thank ${n}`,
+    certTHead:"🙏 CERTIFICATE OF GRATITUDE 🙏",
+    certTPresented:"presented with gratitude to",
+    certTFor:"for standing with the students of India.",
+    certTMotto:"You stood with us — we stand with you.",
+    certTFrom:n=>`— ${n} & the student community`,
+    source:"🔗 Source", pledgeBtn:"✊ Take the Pledge",
+    petTitle:"✍ Sign the Petition",
+    petDesc:"Add your name in support of the students. Then click any public figure above to generate your personal pledge certificate and share it on social media.",
+    petName:"Your name", petCity:"Your city (optional)", petBtn:"Sign",
+    petErr:"Please enter your name.",
+    petThanks:(n,c)=>`Thank you, ${n}! You are signer #${c} on this device. Now generate your certificate above ⤴`,
+    mTitle:n=>`Pledge regarding ${n}`, mName:"Your name",
+    mGen:"Generate Certificate", mDl:"⬇ Download", mShare:"📤 Share", mClose:"Close",
+    fDiscT:"Disclaimer:",
+    fDisc:'Statuses on this site reflect publicly available statements as verified by the site maintainers, with sources linked where available. "Silent" means we have not found a public statement — it is not a claim about anyone\'s private views. Corrections: contact the site admin. This is a peaceful, lawful call for consumer choice and free expression.',
+    fPhotos:"Photos are loaded from Wikipedia / Wikimedia Commons and belong to their respective freely-licensed contributors.",
+    fMade:"Made by students, for students. ✊",
+    certHead:"✊ PLEDGE OF SOLIDARITY ✊", certSub:"with the students of India",
+    certI:n=>`I, ${n},`, certPledge:v=>`pledge that I will not ${v}`,
+    certUntil:"until they speak up for the students.",
+    certMotto:"No support → No support.", certTag:"#StandWithStudents",
+    anon:"A Supporter",
+  },
+  hi: {
+    brand:"स्टैंड विद स्टूडेंट्स",
+    overline:"✊ छात्रों का, छात्रों के लिए एक आंदोलन",
+    heroTitle:'छात्रों के साथ <span>कौन खड़ा है?</span>',
+    heroTag:"जब तक वे हमारे साथ खड़े नहीं होते — न उनका कंटेंट देखें, न उनका बिज़नेस चलाएँ।",
+    heroMsg:"वे हमारे व्यूज़, हमारी टिकटों, हमारे फ़ॉलो और हमारी जेब से कमाते हैं। नीचे प्रण लें, अपना प्रमाणपत्र बनाएँ और शेयर करें — हर शेयर इस आंदोलन को बड़ा बनाता है।",
+    ctaPledge:"✍ प्रण लें", ctaShare:"📤 आंदोलन शेयर करें",
+    shareText:"छात्रों के साथ कौन खड़ा है? प्रण लें और शेयर करें। #StandWithStudents",
+    copied:"लिंक कॉपी हो गया! कहीं भी पेस्ट करके शेयर करें।",
+    spokeUp:"समर्थन किया", silent:"अभी नहीं", notVerified:"असत्यापित", pledges:"प्रण",
+    all:"सभी",
+    stYes:"समर्थन किया", stNo:"अभी समर्थन नहीं", stUnknown:"सत्यापित नहीं",
+    apprTitle:"🙏 आभार दीवार",
+    apprDesc:"इन आवाज़ों ने छात्रों और सोनम वांगचुक का साथ दिया। धन्यवाद — हम आपको याद रखेंगे।",
+    apprSrc:"स्रोत देखें →",
+    apprLink:"🙏 समर्थक",
+    thankBtn:"🙏 समर्थन के लिए धन्यवाद",
+    mTitleThanks:n=>`${n} को धन्यवाद`,
+    certTHead:"🙏 आभार प्रमाणपत्र 🙏",
+    certTPresented:"सादर आभार सहित प्रस्तुत",
+    certTFor:"भारत के छात्रों के साथ खड़े होने के लिए।",
+    certTMotto:"आप हमारे साथ खड़े हुए — हम आपके साथ खड़े हैं।",
+    certTFrom:n=>`— ${n} और छात्र समुदाय की ओर से`,
+    source:"🔗 स्रोत", pledgeBtn:"✊ प्रण लें",
+    petTitle:"✍ याचिका पर हस्ताक्षर करें",
+    petDesc:"छात्रों के समर्थन में अपना नाम जोड़ें। फिर ऊपर किसी भी हस्ती पर क्लिक करके अपना प्रण-प्रमाणपत्र बनाएँ और सोशल मीडिया पर शेयर करें।",
+    petName:"आपका नाम", petCity:"आपका शहर (वैकल्पिक)", petBtn:"हस्ताक्षर करें",
+    petErr:"कृपया अपना नाम लिखें।",
+    petThanks:(n,c)=>`धन्यवाद, ${n}! आप इस डिवाइस पर हस्ताक्षरकर्ता #${c} हैं। अब ऊपर अपना प्रमाणपत्र बनाएँ ⤴`,
+    mTitle:n=>`${n} के बारे में प्रण`, mName:"आपका नाम",
+    mGen:"प्रमाणपत्र बनाएँ", mDl:"⬇ डाउनलोड", mShare:"📤 शेयर", mClose:"बंद करें",
+    fDiscT:"अस्वीकरण:",
+    fDisc:'इस साइट पर दी गई स्थितियाँ सार्वजनिक रूप से उपलब्ध बयानों पर आधारित हैं, जहाँ संभव हो स्रोत लिंक किए गए हैं। "चुप हैं" का अर्थ केवल यह है कि हमें कोई सार्वजनिक बयान नहीं मिला — यह किसी के निजी विचारों के बारे में दावा नहीं है। सुधार के लिए साइट एडमिन से संपर्क करें। यह उपभोक्ता की पसंद और अभिव्यक्ति की स्वतंत्रता की शांतिपूर्ण, वैध अपील है।',
+    fPhotos:"तस्वीरें विकिपीडिया / विकिमीडिया कॉमन्स से ली गई हैं और अपने-अपने मुक्त-लाइसेंस योगदानकर्ताओं की हैं।",
+    fMade:"छात्रों द्वारा, छात्रों के लिए। ✊",
+    certHead:"✊ एकजुटता का प्रण ✊", certSub:"भारत के छात्रों के साथ",
+    certI:n=>`मैं, ${n},`, certPledge:v=>`प्रण लेता/लेती हूँ कि मैं ${v}`,
+    certUntil:"जब तक वे छात्रों के लिए आवाज़ नहीं उठाते।",
+    certMotto:"समर्थन नहीं → समर्थन नहीं।", certTag:"#StandWithStudents",
+    anon:"एक समर्थक",
+  }
+};
+
+/* Hindi display names */
+const NAME_HI = {
+"Shah Rukh Khan":"शाहरुख़ ख़ान","Salman Khan":"सलमान ख़ान","Aamir Khan":"आमिर ख़ान","Akshay Kumar":"अक्षय कुमार","Ajay Devgn":"अजय देवगन","Hrithik Roshan":"ऋतिक रोशन","Ranbir Kapoor":"रणबीर कपूर","Ranveer Singh":"रणवीर सिंह","Varun Dhawan":"वरुण धवन","Kartik Aaryan":"कार्तिक आर्यन","Shahid Kapoor":"शाहिद कपूर","Ayushmann Khurrana":"आयुष्मान खुराना","Vicky Kaushal":"विक्की कौशल","Tiger Shroff":"टाइगर श्रॉफ","Deepika Padukone":"दीपिका पादुकोण","Priyanka Chopra":"प्रियंका चोपड़ा","Alia Bhatt":"आलिया भट्ट","Katrina Kaif":"कैटरीना कैफ़","Anushka Sharma":"अनुष्का शर्मा","Kareena Kapoor":"करीना कपूर","Kriti Sanon":"कृति सैनन","Shraddha Kapoor":"श्रद्धा कपूर","Janhvi Kapoor":"जान्हवी कपूर","Sara Ali Khan":"सारा अली ख़ान","Madhuri Dixit":"माधुरी दीक्षित",
+"Rajinikanth":"रजनीकांत","Ajith Kumar":"अजित कुमार","Suriya":"सूर्या","Dhanush":"धनुष","Karthi":"कार्थी","Sivakarthikeyan":"शिवकार्तिकेयन","Allu Arjun":"अल्लू अर्जुन","Prabhas":"प्रभास","Mahesh Babu":"महेश बाबू","Jr NTR":"जूनियर एनटीआर","Ram Charan":"राम चरण","Vijay Deverakonda":"विजय देवरकोंडा","Nani":"नानी","Yash":"यश","Mohanlal":"मोहनलाल","Mammootty":"ममूटी","Fahadh Faasil":"फ़हाद फ़ासिल","Dulquer Salmaan":"दुलकर सलमान","Prithviraj Sukumaran":"पृथ्वीराज सुकुमारन","Samantha":"सामंथा","Nayanthara":"नयनतारा","Trisha Krishnan":"त्रिशा कृष्णन","Rashmika Mandanna":"रश्मिका मंदाना","Keerthy Suresh":"कीर्ति सुरेश","Sai Pallavi":"साई पल्लवी",
+"Karan Johar":"करण जौहर","Anurag Kashyap":"अनुराग कश्यप","Rajkumar Hirani":"राजकुमार हिरानी","Sanjay Leela Bhansali":"संजय लीला भंसाली","Rohit Shetty":"रोहित शेट्टी","Zoya Akhtar":"ज़ोया अख़्तर","Farhan Akhtar":"फ़रहान अख़्तर","Imtiaz Ali":"इम्तियाज़ अली","Kabir Khan":"कबीर ख़ान","Vishal Bhardwaj":"विशाल भारद्वाज","Anubhav Sinha":"अनुभव सिन्हा","Hansal Mehta":"हंसल मेहता","S. S. Rajamouli":"एस. एस. राजामौली","Atlee":"एटली","Lokesh Kanagaraj":"लोकेश कनगराज","Mani Ratnam":"मणि रत्नम","Shankar":"शंकर","Prashanth Neel":"प्रशांत नील","Sukumar":"सुकुमार","Nag Ashwin":"नाग अश्विन","Ayan Mukerji":"अयान मुखर्जी","Siddharth Anand":"सिद्धार्थ आनंद","Vikramaditya Motwane":"विक्रमादित्य मोटवाने","Neeraj Pandey":"नीरज पांडेय","Meghna Gulzar":"मेघना गुलज़ार",
+"CarryMinati":"कैरीमिनाटी","Bhuvan Bam":"भुवन बाम","Ashish Chanchlani":"आशीष चंचलानी","Technical Guruji":"टेक्निकल गुरुजी","Dhruv Rathee":"ध्रुव राठी","Tanmay Bhat":"तन्मय भट्ट","Samay Raina":"समय रैना","Triggered Insaan":"ट्रिगर्ड इंसान","Fukra Insaan":"फुकरा इंसान","Elvish Yadav":"एल्विश यादव","Sourav Joshi":"सौरव जोशी","Flying Beast":"फ्लाइंग बीस्ट","Mumbiker Nikhil":"मुंबईकर निखिल","Physics Wallah":"फिजिक्स वाला","Khan Sir":"ख़ान सर","Amit Bhadana":"अमित भड़ाना","Harsh Beniwal":"हर्ष बेनीवाल","Techno Gamerz":"टेक्नो गेमर्ज़","Mortal":"मॉर्टल","ScoutOP":"स्काउट","Total Gaming":"टोटल गेमिंग","Dynamo Gaming":"डायनेमो गेमिंग","Crazy XYZ":"क्रेज़ी XYZ","Mythpat":"मिथपैट","Purav Jha":"पूरव झा",
+"BeerBiceps":"बीयरबाइसेप्स","Raj Shamani":"राज शमानी","Nikhil Kamath":"निखिल कामत","Samdish Bhatia":"समदीश भाटिया","Shwetabh Gangwar":"श्वेताभ गंगवार","Prakhar Gupta":"प्रखर गुप्ता","Varun Mayya":"वरुण मैया","Ankur Warikoo":"अंकुर वारिकू","Sandeep Maheshwari":"संदीप महेश्वरी","Vivek Bindra":"विवेक बिंद्रा","Jay Shetty":"जय शेट्टी","Amit Varma":"अमित वर्मा","Cyrus Broacha":"साइरस ब्रोचा","Neelesh Misra":"नीलेश मिसरा","Kushal Mehra":"कुशल मेहरा","Abhijit Chavda":"अभिजीत चावड़ा","Akshat Shrivastava":"अक्षत श्रीवास्तव","Pranjal Kamra":"प्रांजल कामरा","Rachana Ranade":"रचना रानडे","Sharan Hegde":"शरण हेगड़े","Suhani Shah":"सुहानी शाह","Vinamre Kasanaa":"विनम्र कसाना","RJ Naved":"आरजे नावेद","RJ Malishka":"आरजे मलिष्का","Think School":"थिंक स्कूल",
+"Virat Kohli":"विराट कोहली","Rohit Sharma":"रोहित शर्मा","MS Dhoni":"एमएस धोनी","Jasprit Bumrah":"जसप्रीत बुमराह","KL Rahul":"केएल राहुल","Hardik Pandya":"हार्दिक पांड्या","Ravindra Jadeja":"रवींद्र जडेजा","R Ashwin":"आर अश्विन","Shubman Gill":"शुभमन गिल","Rishabh Pant":"ऋषभ पंत","Suryakumar Yadav":"सूर्यकुमार यादव","Yashasvi Jaiswal":"यशस्वी जायसवाल","Mohammed Shami":"मोहम्मद शमी","Mohammed Siraj":"मोहम्मद सिराज","Kuldeep Yadav":"कुलदीप यादव","Axar Patel":"अक्षर पटेल","Shreyas Iyer":"श्रेयस अय्यर","Ishan Kishan":"ईशान किशन","Sanju Samson":"संजू सैमसन","Smriti Mandhana":"स्मृति मंधाना","Harmanpreet Kaur":"हरमनप्रीत कौर","Shafali Verma":"शेफाली वर्मा","Jemimah Rodrigues":"जेमिमा रोड्रिग्स","Deepti Sharma":"दीप्ति शर्मा","Richa Ghosh":"ऋचा घोष",
+"Neeraj Chopra":"नीरज चोपड़ा","PV Sindhu":"पीवी सिंधु","Saina Nehwal":"साइना नेहवाल","Mary Kom":"मैरी कॉम","Lovlina Borgohain":"लवलीना बोरगोहेन","Nikhat Zareen":"निखत ज़रीन","Mirabai Chanu":"मीराबाई चानू","Bajrang Punia":"बजरंग पुनिया","Ravi Kumar Dahiya":"रवि कुमार दहिया","Sakshi Malik":"साक्षी मलिक","Sunil Chhetri":"सुनील छेत्री","Lakshya Sen":"लक्ष्य सेन","HS Prannoy":"एचएस प्रणय","Satwiksairaj Rankireddy":"सात्विकसाईराज रंकीरेड्डी","Chirag Shetty":"चिराग शेट्टी","Manu Bhaker":"मनु भाकर","Abhinav Bindra":"अभिनव बिंद्रा","Rohan Bopanna":"रोहन बोपन्ना","Sumit Nagal":"सुमित नागल","Gukesh D":"गुकेश डी","Praggnanandhaa":"प्रज्ञानानंद","Viswanathan Anand":"विश्वनाथन आनंद","Koneru Humpy":"कोनेरू हम्पी","PR Sreejesh":"पीआर श्रीजेश","Harmanpreet Singh":"हरमनप्रीत सिंह",
+"Arijit Singh":"अरिजीत सिंह","Shreya Ghoshal":"श्रेया घोषाल","Sonu Nigam":"सोनू निगम","Neha Kakkar":"नेहा कक्कड़","Badshah":"बादशाह","Yo Yo Honey Singh":"यो यो हनी सिंह","Diljit Dosanjh":"दिलजीत दोसांझ","AP Dhillon":"एपी ढिल्लों","Armaan Malik":"अरमान मलिक","Jubin Nautiyal":"जुबिन नौटियाल","B Praak":"बी प्राक","Guru Randhawa":"गुरु रंधावा","Sunidhi Chauhan":"सुनिधि चौहान","A. R. Rahman":"ए. आर. रहमान","Anirudh Ravichander":"अनिरुद्ध रविचंदर","Devi Sri Prasad":"देवी श्री प्रसाद","Sid Sriram":"सिड श्रीराम","Shankar Mahadevan":"शंकर महादेवन","Vishal Dadlani":"विशाल ददलानी","Amit Trivedi":"अमित त्रिवेदी","Pritam":"प्रीतम","King":"किंग","Divine":"डिवाइन","Raftaar":"रफ़्तार","Darshan Raval":"दर्शन रावल",
+"Zakir Khan":"ज़ाकिर ख़ान","Vir Das":"वीर दास","Kapil Sharma":"कपिल शर्मा","Anubhav Singh Bassi":"अनुभव सिंह बस्सी","Kenny Sebastian":"केनी सेबेस्टियन","Kanan Gill":"कनन गिल","Biswa Kalyan Rath":"बिस्वा कल्याण रथ","Rahul Subramanian":"राहुल सुब्रमण्यम","Abhishek Upmanyu":"अभिषेक उपमन्यु","Aakash Gupta":"आकाश गुप्ता","Sumukhi Suresh":"सुमुखी सुरेश","Aditi Mittal":"अदिति मित्तल","Munawar Faruqui":"मुनव्वर फ़ारूक़ी","Kunal Kamra":"कुणाल कामरा","Varun Grover":"वरुण ग्रोवर","Sorabh Pant":"सौरभ पंत","Atul Khatri":"अतुल खत्री","Rahul Dua":"राहुल दुआ","Harsh Gujral":"हर्ष गुजराल","Bharti Singh":"भारती सिंह","Krushna Abhishek":"कृष्णा अभिषेक","Sunil Grover":"सुनील ग्रोवर","Abish Mathew":"अबीश मैथ्यू","Rohan Joshi":"रोहन जोशी","Sapan Verma":"सपन वर्मा",
+"Kusha Kapila":"कुशा कपिला","Prajakta Koli":"प्राजक्ता कोली","Dolly Singh":"डॉली सिंह","Ankush Bahuguna":"अंकुश बहुगुणा","Komal Pandey":"कोमल पांडे","Kritika Khurana":"कृतिका खुराना","Sejal Kumar":"सेजल कुमार","Masoom Minawala":"मासूम मिनावाला","Jannat Zubair":"जन्नत ज़ुबैर","Avneet Kaur":"अवनीत कौर","Mr Faisu":"मिस्टर फैसू","Riyaz Aly":"रियाज़ अली","Awez Darbar":"आवेज़ दरबार","Anushka Sen":"अनुष्का सेन","Orry":"ऑरी","Uorfi Javed":"उर्फी जावेद","Dolly Chaiwala":"डॉली चायवाला","Ruhee Dosani":"रूही दोसानी","Yashraj Mukhate":"यशराज मुखाटे","RJ Karishma":"आरजे करिश्मा","Saloni Gaur":"सलोनी गौर","Shraddha Jain":"श्रद्धा जैन","Niharika NM":"निहारिका एनएम","Srishti Dixit":"सृष्टि दीक्षित","Viraj Ghelani":"विराज घेलानी",
+"Sonakshi Sinha":"सोनाक्षी सिन्हा","Fatima Sana Shaikh":"फ़ातिमा सना शेख","Swara Bhasker":"स्वरा भास्कर","Shabana Azmi":"शबाना आज़मी","Soni Razdan":"सोनी राज़दान","Zeenat Aman":"ज़ीनत अमान","Ratna Pathak Shah":"रत्ना पाठक शाह","Naseeruddin Shah":"नसीरुद्दीन शाह","Abhay Deol":"अभय देओल","Omi Vaidya":"ओमी वैद्य","Vivek Oberoi":"विवेक ओबेरॉय","Atul Kulkarni":"अतुल कुलकर्णी","Shweta Tiwari":"श्वेता तिवारी","Kiran Rao":"किरण राव","Prakash Raj":"प्रकाश राज",
+"Mukesh Ambani":"मुकेश अंबानी","Gautam Adani":"गौतम अडानी","Anand Mahindra":"आनंद महिंद्रा","N. R. Narayana Murthy":"नारायण मूर्ति","Azim Premji":"अज़ीम प्रेमजी","Nithin Kamath":"नितिन कामत","Kumar Mangalam Birla":"कुमार मंगलम बिड़ला","Sunil Bharti Mittal":"सुनील भारती मित्तल","Shiv Nadar":"शिव नादर","Uday Kotak":"उदय कोटक","Falguni Nayar":"फाल्गुनी नायर","Kiran Mazumdar-Shaw":"किरण मजूमदार-शॉ","Ritesh Agarwal":"रितेश अग्रवाल","Bhavish Aggarwal":"भाविश अग्रवाल","Deepinder Goyal":"दीपिंदर गोयल","Aman Gupta":"अमन गुप्ता","Namita Thapar":"नमिता थापर","Vineeta Singh":"विनीता सिंह","Peyush Bansal":"पीयूष बंसल","Anupam Mittal":"अनुपम मित्तल","Ashneer Grover":"अश्नीर ग्रोवर","Ghazal Alagh":"ग़ज़ल अलघ","Kunal Shah":"कुणाल शाह","Sachin Bansal":"सचिन बंसल","Byju Raveendran":"बायजू रवींद्रन"
+};
+
+/* Hindi role labels (fallback: original text, e.g. company names stay as-is) */
+const ROLE_HI = {
+"Actor":"अभिनेता","Actress":"अभिनेत्री","Director":"निर्देशक","YouTuber":"यूट्यूबर","Tech":"टेक","Educator":"शिक्षक","Creator":"क्रिएटर","Streamer":"स्ट्रीमर","Vlogger":"व्लॉगर","Gamer":"गेमर","Experiments":"एक्सपेरिमेंट्स","Podcaster":"पॉडकास्टर","Interviewer":"इंटरव्यूअर","Speaker":"वक्ता","Storyteller":"कहानीकार","Finance":"फाइनेंस","Mentalist":"मेंटलिस्ट","RJ":"आरजे","Batter":"बल्लेबाज़","Bowler":"गेंदबाज़","Wicketkeeper":"विकेटकीपर","All-rounder":"ऑलराउंडर","Javelin":"भाला फेंक","Badminton":"बैडमिंटन","Boxing":"मुक्केबाज़ी","Weightlifting":"भारोत्तोलन","Wrestling":"कुश्ती","Football":"फुटबॉल","Shooting":"निशानेबाज़ी","Tennis":"टेनिस","Chess":"शतरंज","Hockey":"हॉकी","Singer":"गायक","Rapper":"रैपर","Composer":"संगीतकार","Comedian":"कॉमेडियन","Fashion":"फैशन","Dancer":"डांसर","Personality":"हस्ती","Satirist":"व्यंग्यकार","Entrepreneur":"उद्यमी","Music memes":"म्यूज़िक मीम्स","TV Actress":"टीवी अभिनेत्री"
+};
+
+/* ==========================================================================
+   EDIT YOUR DATA HERE.
+   status: "yes" = spoke in support (add source URL!) | "no" = silent | "unknown" = not verified (default)
+   wiki: exact English Wikipedia page title (only if different from name) — used for the photo.
+   ========================================================================== */
+const CATEGORIES = [
+  { id:"bolly",    en:"🎬 Bollywood Stars",        hi:"🎬 बॉलीवुड सितारे",       verbEn:"watch the movies of",      verbHi:"इनकी फ़िल्में नहीं देखूँगा/देखूँगी:" },
+  { id:"south",    en:"🌟 South Indian Cinema",    hi:"🌟 दक्षिण भारतीय सिनेमा",  verbEn:"watch the movies of",      verbHi:"इनकी फ़िल्में नहीं देखूँगा/देखूँगी:" },
+  { id:"director", en:"🎥 Directors",              hi:"🎥 निर्देशक",              verbEn:"watch the films of",       verbHi:"इनकी फ़िल्में नहीं देखूँगा/देखूँगी:" },
+  { id:"youtube",  en:"📺 YouTubers",              hi:"📺 यूट्यूबर",              verbEn:"watch the videos of",      verbHi:"इनके वीडियो नहीं देखूँगा/देखूँगी:" },
+  { id:"podcast",  en:"🎙 Podcasters",             hi:"🎙 पॉडकास्टर",             verbEn:"listen to the podcasts of",verbHi:"इनके पॉडकास्ट नहीं सुनूँगा/सुनूँगी:" },
+  { id:"cricket",  en:"🏏 Cricketers",             hi:"🏏 क्रिकेटर",              verbEn:"cheer for",                verbHi:"इनका समर्थन नहीं करूँगा/करूँगी:" },
+  { id:"sports",   en:"🏅 Other Sports",           hi:"🏅 अन्य खेल",              verbEn:"cheer for",                verbHi:"इनका समर्थन नहीं करूँगा/करूँगी:" },
+  { id:"music",    en:"🎤 Singers & Musicians",    hi:"🎤 गायक और संगीतकार",     verbEn:"listen to the songs of",   verbHi:"इनके गाने नहीं सुनूँगा/सुनूँगी:" },
+  { id:"comedy",   en:"😄 Comedians",              hi:"😄 कॉमेडियन",              verbEn:"attend the shows of",      verbHi:"इनके शो नहीं देखूँगा/देखूँगी:" },
+  { id:"influencer",en:"📱 Influencers",           hi:"📱 इन्फ्लुएंसर",           verbEn:"follow the content of",    verbHi:"इन्हें फ़ॉलो नहीं करूँगा/करूँगी:" },
+  { id:"business", en:"💼 Business Leaders",       hi:"💼 उद्योगपति",             verbEn:"buy the products of",      verbHi:"इनके प्रोडक्ट नहीं खरीदूँगा/खरीदूँगी:" },
+];
+
+const PEOPLE = [
+  // --- Bollywood Stars ---
+  { cat:"bolly", name:"Shah Rukh Khan",    role:"Actor",    status:"no", source:"" },
+  { cat:"bolly", name:"Salman Khan",       role:"Actor",    status:"no", source:"" },
+  { cat:"bolly", name:"Aamir Khan",        role:"Actor",    status:"no", source:"" },
+  { cat:"bolly", name:"Akshay Kumar",      role:"Actor",    status:"no", source:"" },
+  { cat:"bolly", name:"Ajay Devgn",        role:"Actor",    status:"no", source:"" },
+  { cat:"bolly", name:"Hrithik Roshan",    role:"Actor",    status:"yes", source:"https://www.etvbharat.com/en/entertainment/hrithik-roshan-backs-sonam-wangchuk-amid-hunger-strike-over-neet-paper-leak-enn26071801402", note:"Shared the protest video, called for justice for students", noteHi:"प्रोटेस्ट वीडियो शेयर किया, छात्रों के लिए न्याय माँगा" },
+  { cat:"bolly", name:"Ranbir Kapoor",     role:"Actor",    status:"no", source:"" },
+  { cat:"bolly", name:"Ranveer Singh",     role:"Actor",    status:"no", source:"" },
+  { cat:"bolly", name:"Varun Dhawan",      role:"Actor",    status:"no", source:"" },
+  { cat:"bolly", name:"Kartik Aaryan",     role:"Actor",    status:"no", source:"" },
+  { cat:"bolly", name:"Shahid Kapoor",     role:"Actor",    status:"no", source:"" },
+  { cat:"bolly", name:"Ayushmann Khurrana",role:"Actor",    status:"no", source:"" },
+  { cat:"bolly", name:"Vicky Kaushal",     role:"Actor",    status:"no", source:"" },
+  { cat:"bolly", name:"Tiger Shroff",      role:"Actor",    status:"no", source:"" },
+  { cat:"bolly", name:"Deepika Padukone",  role:"Actress",  status:"no", source:"" },
+  { cat:"bolly", name:"Priyanka Chopra",   role:"Actress",  status:"no", source:"" },
+  { cat:"bolly", name:"Alia Bhatt",        role:"Actress",  status:"no", source:"" },
+  { cat:"bolly", name:"Katrina Kaif",      role:"Actress",  status:"no", source:"" },
+  { cat:"bolly", name:"Anushka Sharma",    role:"Actress",  status:"no", source:"" },
+  { cat:"bolly", name:"Kareena Kapoor",    role:"Actress",  status:"no", source:"", wiki:"Kareena Kapoor Khan" },
+  { cat:"bolly", name:"Kriti Sanon",       role:"Actress",  status:"no", source:"" },
+  { cat:"bolly", name:"Shraddha Kapoor",   role:"Actress",  status:"no", source:"" },
+  { cat:"bolly", name:"Janhvi Kapoor",     role:"Actress",  status:"no", source:"" },
+  { cat:"bolly", name:"Sara Ali Khan",     role:"Actress",  status:"no", source:"" },
+  { cat:"bolly", name:"Madhuri Dixit",     role:"Actress",  status:"no", source:"" },
+  { cat:"bolly", name:"Sonakshi Sinha",    role:"Actress",  status:"yes", source:"https://www.tribuneindia.com/news/lifestyle/sonakshi-sinha-comedians-and-other-bollywood-stars-rally-behind-wangchuk-as-hunger-strike-turns-critical/", note:"Congratulated the youth for raising their voice", noteHi:"आवाज़ उठाने पर युवाओं को बधाई दी" },
+  { cat:"bolly", name:"Fatima Sana Shaikh",role:"Actress",  status:"yes", source:"https://www.tribuneindia.com/news/lifestyle/sonakshi-sinha-comedians-and-other-bollywood-stars-rally-behind-wangchuk-as-hunger-strike-turns-critical/", note:"Said a student's future is worth protecting", noteHi:"कहा — छात्र का भविष्य बचाना ज़रूरी है" },
+  { cat:"bolly", name:"Swara Bhasker",     role:"Actress",  status:"yes", source:"https://sundayguardianlive.com/entertainment-news/who-all-are-supporting-sonam-wangchuk-bollywood-celebrities-rally-behind-ladakh-activist-amid-hunger-strike-238103/", note:"Visited Jantar Mantar to stand with Wangchuk", noteHi:"जंतर मंतर जाकर वांगचुक के साथ खड़ी हुईं" },
+  { cat:"bolly", name:"Shabana Azmi",      role:"Actress",  status:"yes", source:"https://www.outlookindia.com/art-entertainment/shabana-azmi-urges-sonam-wangchuk-to-end-hunger-strike", note:"Publicly backed him: 'Our country needs people like you'", noteHi:"खुलकर समर्थन किया — 'देश को आप जैसे लोगों की ज़रूरत है'" },
+  { cat:"bolly", name:"Soni Razdan",       role:"Actress",  status:"yes", source:"https://sundayguardianlive.com/entertainment-news/who-all-are-supporting-sonam-wangchuk-bollywood-celebrities-rally-behind-ladakh-activist-amid-hunger-strike-238103/", note:"Made an emotional appeal in his support", noteHi:"समर्थन में भावुक अपील की" },
+  { cat:"bolly", name:"Zeenat Aman",       role:"Actress",  status:"yes", source:"https://sundayguardianlive.com/entertainment-news/who-all-are-supporting-sonam-wangchuk-bollywood-celebrities-rally-behind-ladakh-activist-amid-hunger-strike-238103/", note:"Expressed solidarity, called for dialogue", noteHi:"एकजुटता जताई, संवाद की माँग की" },
+  { cat:"bolly", name:"Ratna Pathak Shah", role:"Actress",  status:"yes", source:"https://sundayguardianlive.com/entertainment-news/who-all-are-supporting-sonam-wangchuk-bollywood-celebrities-rally-behind-ladakh-activist-amid-hunger-strike-238103/", note:"Expressed solidarity, called for dialogue", noteHi:"एकजुटता जताई, संवाद की माँग की" },
+  { cat:"bolly", name:"Naseeruddin Shah",  role:"Actor",    status:"yes", source:"https://sundayguardianlive.com/entertainment-news/who-all-are-supporting-sonam-wangchuk-bollywood-celebrities-rally-behind-ladakh-activist-amid-hunger-strike-238103/", note:"Voiced support, worried for his health", noteHi:"समर्थन जताया, उनकी सेहत की चिंता की" },
+  { cat:"bolly", name:"Abhay Deol",        role:"Actor",    status:"yes", source:"https://sundayguardianlive.com/entertainment-news/who-all-are-supporting-sonam-wangchuk-bollywood-celebrities-rally-behind-ladakh-activist-amid-hunger-strike-238103/", note:"Spoke in support of dialogue", noteHi:"संवाद के समर्थन में बोले" },
+  { cat:"bolly", name:"Omi Vaidya",        role:"Actor",    status:"yes", source:"https://sundayguardianlive.com/entertainment-news/who-all-are-supporting-sonam-wangchuk-bollywood-celebrities-rally-behind-ladakh-activist-amid-hunger-strike-238103/", note:"Shared a support video (his 3 Idiots role was inspired by Wangchuk)", noteHi:"समर्थन वीडियो शेयर किया (3 इडियट्स का किरदार वांगचुक से प्रेरित)" },
+  { cat:"bolly", name:"Vivek Oberoi",      role:"Actor",    status:"yes", source:"https://www.bollywoodbubble.com/bollywood-news/sonam-wangchuk-hunger-strike-hrithik-roshan-shatrughan-sonakshi-sinha-kiran-rao-vivek-oberoi-and-more-celebs-extend-their-support/", note:"Extended public support", noteHi:"सार्वजनिक समर्थन दिया" },
+  { cat:"bolly", name:"Atul Kulkarni",     role:"Actor",    status:"yes", source:"https://www.tribuneindia.com/news/lifestyle/sonakshi-sinha-comedians-and-other-bollywood-stars-rally-behind-wangchuk-as-hunger-strike-turns-critical/", note:"Fasted for a day in solidarity", noteHi:"एकजुटता में एक दिन का उपवास रखा" },
+  { cat:"bolly", name:"Shweta Tiwari",     role:"TV Actress", status:"yes", source:"https://www.ibtimes.co.in/sonakshi-sinha-samay-raina-shweta-tiwari-support-sonam-wangchuk-delhi-hc-orders-daily-medical-903924", note:"Publicly supported Wangchuk", noteHi:"सार्वजनिक रूप से समर्थन किया" },
+  // --- South Indian Cinema ---
+  { cat:"south", name:"Rajinikanth",         role:"Actor",   status:"no", source:"" },
+  { cat:"south", name:"Ajith Kumar",         role:"Actor",   status:"no", source:"" },
+  { cat:"south", name:"Suriya",              role:"Actor",   status:"no", source:"" },
+  { cat:"south", name:"Dhanush",             role:"Actor",   status:"no", source:"" },
+  { cat:"south", name:"Karthi",              role:"Actor",   status:"no", source:"" },
+  { cat:"south", name:"Sivakarthikeyan",     role:"Actor",   status:"no", source:"" },
+  { cat:"south", name:"Allu Arjun",          role:"Actor",   status:"no", source:"" },
+  { cat:"south", name:"Prabhas",             role:"Actor",   status:"no", source:"" },
+  { cat:"south", name:"Mahesh Babu",         role:"Actor",   status:"no", source:"" },
+  { cat:"south", name:"Jr NTR",              role:"Actor",   status:"no", source:"", wiki:"N. T. Rama Rao Jr." },
+  { cat:"south", name:"Ram Charan",          role:"Actor",   status:"no", source:"" },
+  { cat:"south", name:"Vijay Deverakonda",   role:"Actor",   status:"no", source:"" },
+  { cat:"south", name:"Nani",                role:"Actor",   status:"no", source:"", wiki:"Nani (actor)" },
+  { cat:"south", name:"Yash",                role:"Actor",   status:"no", source:"", wiki:"Yash (actor)" },
+  { cat:"south", name:"Mohanlal",            role:"Actor",   status:"no", source:"" },
+  { cat:"south", name:"Mammootty",           role:"Actor",   status:"no", source:"" },
+  { cat:"south", name:"Fahadh Faasil",       role:"Actor",   status:"no", source:"" },
+  { cat:"south", name:"Dulquer Salmaan",     role:"Actor",   status:"no", source:"" },
+  { cat:"south", name:"Prithviraj Sukumaran",role:"Actor",   status:"no", source:"" },
+  { cat:"south", name:"Samantha",            role:"Actress", status:"no", source:"", wiki:"Samantha Ruth Prabhu" },
+  { cat:"south", name:"Nayanthara",          role:"Actress", status:"no", source:"" },
+  { cat:"south", name:"Trisha Krishnan",     role:"Actress", status:"no", source:"" },
+  { cat:"south", name:"Rashmika Mandanna",   role:"Actress", status:"no", source:"" },
+  { cat:"south", name:"Keerthy Suresh",      role:"Actress", status:"no", source:"" },
+  { cat:"south", name:"Sai Pallavi",         role:"Actress", status:"no", source:"" },
+  { cat:"south", name:"Prakash Raj",         role:"Actor",   status:"yes", source:"https://www.ibtimes.co.in/sonakshi-sinha-samay-raina-shweta-tiwari-support-sonam-wangchuk-delhi-hc-orders-daily-medical-903924", note:"Expressed support for the protest", noteHi:"प्रोटेस्ट का समर्थन किया" },
+  // --- Directors ---
+  { cat:"director", name:"Karan Johar",          role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"Anurag Kashyap",       role:"Director",  status:"yes", source:"https://www.wionews.com/photos/sonam-wangchuk-s-protest-anurag-kashyap-omi-vaidya-swara-bhaskar-and-other-celebrities-extend-support-to-the-education-reformer-1784112232731", note:"Posted a long note of support on Instagram", noteHi:"इंस्टाग्राम पर समर्थन में लंबा नोट लिखा" },
+  { cat:"director", name:"Rajkumar Hirani",      role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"Sanjay Leela Bhansali",role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"Rohit Shetty",         role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"Zoya Akhtar",          role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"Farhan Akhtar",        role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"Imtiaz Ali",           role:"Director",  status:"no", source:"", wiki:"Imtiaz Ali (director)" },
+  { cat:"director", name:"Kabir Khan",           role:"Director",  status:"no", source:"", wiki:"Kabir Khan (director)" },
+  { cat:"director", name:"Vishal Bhardwaj",      role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"Anubhav Sinha",        role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"Hansal Mehta",         role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"S. S. Rajamouli",      role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"Atlee",                role:"Director",  status:"no", source:"", wiki:"Atlee (director)" },
+  { cat:"director", name:"Lokesh Kanagaraj",     role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"Mani Ratnam",          role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"Shankar",              role:"Director",  status:"no", source:"", wiki:"S. Shankar" },
+  { cat:"director", name:"Prashanth Neel",       role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"Sukumar",              role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"Nag Ashwin",           role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"Ayan Mukerji",         role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"Siddharth Anand",      role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"Vikramaditya Motwane", role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"Neeraj Pandey",        role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"Meghna Gulzar",        role:"Director",  status:"no", source:"" },
+  { cat:"director", name:"Kiran Rao",            role:"Director",  status:"yes", source:"https://www.bollywoodbubble.com/bollywood-news/sonam-wangchuk-hunger-strike-hrithik-roshan-shatrughan-sonakshi-sinha-kiran-rao-vivek-oberoi-and-more-celebs-extend-their-support/", note:"Changed her DP to 'I Support Sonam'", noteHi:"डीपी बदलकर 'I Support Sonam' लगाई" },
+  // --- YouTubers ---
+  { cat:"youtube", name:"CarryMinati",        role:"YouTuber",   status:"no", source:"" },
+  { cat:"youtube", name:"Bhuvan Bam",         role:"YouTuber",   status:"yes", source:"https://www.tribuneindia.com/news/lifestyle/sonakshi-sinha-comedians-and-other-bollywood-stars-rally-behind-wangchuk-as-hunger-strike-turns-critical/", note:"Posted in support of dialogue with the students", noteHi:"छात्रों से संवाद के समर्थन में पोस्ट किया" },
+  { cat:"youtube", name:"Ashish Chanchlani",  role:"YouTuber",   status:"no", source:"" },
+  { cat:"youtube", name:"Technical Guruji",   role:"Tech",       status:"no", source:"" },
+  { cat:"youtube", name:"Dhruv Rathee",       role:"Educator",   status:"no", source:"" },
+  { cat:"youtube", name:"Tanmay Bhat",        role:"Creator",    status:"no", source:"" },
+  { cat:"youtube", name:"Samay Raina",        role:"Streamer",   status:"yes", source:"https://www.ibtimes.co.in/sonakshi-sinha-samay-raina-shweta-tiwari-support-sonam-wangchuk-delhi-hc-orders-daily-medical-903924", note:"Shared Wangchuk's photo, prayed for dialogue", noteHi:"वांगचुक की तस्वीर शेयर की, संवाद की उम्मीद जताई" },
+  { cat:"youtube", name:"Triggered Insaan",   role:"YouTuber",   status:"no", source:"", wiki:"Nischay Malhan" },
+  { cat:"youtube", name:"Fukra Insaan",       role:"YouTuber",   status:"no", source:"", wiki:"Abhishek Malhan" },
+  { cat:"youtube", name:"Elvish Yadav",       role:"YouTuber",   status:"no", source:"" },
+  { cat:"youtube", name:"Sourav Joshi",       role:"Vlogger",    status:"no", source:"" },
+  { cat:"youtube", name:"Flying Beast",       role:"Vlogger",    status:"no", source:"", wiki:"Gaurav Taneja" },
+  { cat:"youtube", name:"Mumbiker Nikhil",    role:"Vlogger",    status:"no", source:"" },
+  { cat:"youtube", name:"Physics Wallah",     role:"Educator",   status:"no", source:"", wiki:"Alakh Pandey" },
+  { cat:"youtube", name:"Khan Sir",           role:"Educator",   status:"no", source:"" },
+  { cat:"youtube", name:"Amit Bhadana",       role:"YouTuber",   status:"no", source:"" },
+  { cat:"youtube", name:"Harsh Beniwal",      role:"YouTuber",   status:"no", source:"" },
+  { cat:"youtube", name:"Techno Gamerz",      role:"Gamer",      status:"no", source:"", wiki:"Ujjwal Chaurasia" },
+  { cat:"youtube", name:"Mortal",             role:"Gamer",      status:"no", source:"", wiki:"Naman Mathur" },
+  { cat:"youtube", name:"ScoutOP",            role:"Gamer",      status:"yes", source:"https://www.tribuneindia.com/news/lifestyle/sonakshi-sinha-comedians-and-other-bollywood-stars-rally-behind-wangchuk-as-hunger-strike-turns-critical/", wiki:"Tanmay Singh", note:"Urged fellow creators to speak up", noteHi:"साथी क्रिएटर्स से आवाज़ उठाने को कहा" },
+  { cat:"youtube", name:"Total Gaming",       role:"Gamer",      status:"no", source:"" },
+  { cat:"youtube", name:"Dynamo Gaming",      role:"Gamer",      status:"no", source:"", wiki:"Aditya Sawant" },
+  { cat:"youtube", name:"Crazy XYZ",          role:"Experiments",status:"no", source:"", wiki:"Amit Sharma (YouTuber)" },
+  { cat:"youtube", name:"Mythpat",            role:"Gamer",      status:"no", source:"", wiki:"Mithilesh Patankar" },
+  { cat:"youtube", name:"Purav Jha",          role:"Creator",    status:"no", source:"" },
+  // --- Podcasters ---
+  { cat:"podcast", name:"BeerBiceps",         role:"Podcaster",  status:"no", source:"", wiki:"Ranveer Allahbadia" },
+  { cat:"podcast", name:"Raj Shamani",        role:"Podcaster",  status:"no", source:"" },
+  { cat:"podcast", name:"Nikhil Kamath",      role:"Podcaster",  status:"no", source:"" },
+  { cat:"podcast", name:"Samdish Bhatia",     role:"Interviewer",status:"no", source:"" },
+  { cat:"podcast", name:"Shwetabh Gangwar",   role:"Podcaster",  status:"no", source:"" },
+  { cat:"podcast", name:"Prakhar Gupta",      role:"Podcaster",  status:"no", source:"" },
+  { cat:"podcast", name:"Varun Mayya",        role:"Podcaster",  status:"no", source:"" },
+  { cat:"podcast", name:"Ankur Warikoo",      role:"Creator",    status:"no", source:"" },
+  { cat:"podcast", name:"Sandeep Maheshwari", role:"Speaker",    status:"no", source:"" },
+  { cat:"podcast", name:"Vivek Bindra",       role:"Speaker",    status:"no", source:"" },
+  { cat:"podcast", name:"Jay Shetty",         role:"Podcaster",  status:"no", source:"" },
+  { cat:"podcast", name:"Amit Varma",         role:"Podcaster",  status:"no", source:"", wiki:"Amit Varma (writer)" },
+  { cat:"podcast", name:"Cyrus Broacha",      role:"Podcaster",  status:"no", source:"" },
+  { cat:"podcast", name:"Neelesh Misra",      role:"Storyteller",status:"no", source:"" },
+  { cat:"podcast", name:"Kushal Mehra",       role:"Podcaster",  status:"no", source:"" },
+  { cat:"podcast", name:"Abhijit Chavda",     role:"Podcaster",  status:"no", source:"" },
+  { cat:"podcast", name:"Akshat Shrivastava", role:"Finance",    status:"no", source:"" },
+  { cat:"podcast", name:"Pranjal Kamra",      role:"Finance",    status:"no", source:"" },
+  { cat:"podcast", name:"Rachana Ranade",     role:"Finance",    status:"no", source:"" },
+  { cat:"podcast", name:"Sharan Hegde",       role:"Finance",    status:"no", source:"" },
+  { cat:"podcast", name:"Suhani Shah",        role:"Mentalist",  status:"no", source:"" },
+  { cat:"podcast", name:"Vinamre Kasanaa",    role:"Podcaster",  status:"no", source:"" },
+  { cat:"podcast", name:"RJ Naved",           role:"RJ",         status:"no", source:"" },
+  { cat:"podcast", name:"RJ Malishka",        role:"RJ",         status:"no", source:"", wiki:"Malishka Mendonsa" },
+  { cat:"podcast", name:"Think School",       role:"Educator",   status:"no", source:"" },
+  // --- Cricketers ---
+  { cat:"cricket", name:"Virat Kohli",        role:"Batter",      status:"no", source:"" },
+  { cat:"cricket", name:"Rohit Sharma",       role:"Batter",      status:"no", source:"" },
+  { cat:"cricket", name:"MS Dhoni",           role:"Wicketkeeper",status:"no", source:"" },
+  { cat:"cricket", name:"Jasprit Bumrah",     role:"Bowler",      status:"no", source:"" },
+  { cat:"cricket", name:"KL Rahul",           role:"Batter",      status:"no", source:"" },
+  { cat:"cricket", name:"Hardik Pandya",      role:"All-rounder", status:"no", source:"" },
+  { cat:"cricket", name:"Ravindra Jadeja",    role:"All-rounder", status:"no", source:"" },
+  { cat:"cricket", name:"R Ashwin",           role:"Bowler",      status:"no", source:"", wiki:"Ravichandran Ashwin" },
+  { cat:"cricket", name:"Shubman Gill",       role:"Batter",      status:"no", source:"" },
+  { cat:"cricket", name:"Rishabh Pant",       role:"Wicketkeeper",status:"no", source:"" },
+  { cat:"cricket", name:"Suryakumar Yadav",   role:"Batter",      status:"no", source:"" },
+  { cat:"cricket", name:"Yashasvi Jaiswal",   role:"Batter",      status:"no", source:"" },
+  { cat:"cricket", name:"Mohammed Shami",     role:"Bowler",      status:"no", source:"" },
+  { cat:"cricket", name:"Mohammed Siraj",     role:"Bowler",      status:"no", source:"" },
+  { cat:"cricket", name:"Kuldeep Yadav",      role:"Bowler",      status:"no", source:"" },
+  { cat:"cricket", name:"Axar Patel",         role:"All-rounder", status:"no", source:"" },
+  { cat:"cricket", name:"Shreyas Iyer",       role:"Batter",      status:"no", source:"" },
+  { cat:"cricket", name:"Ishan Kishan",       role:"Wicketkeeper",status:"no", source:"" },
+  { cat:"cricket", name:"Sanju Samson",       role:"Wicketkeeper",status:"no", source:"" },
+  { cat:"cricket", name:"Smriti Mandhana",    role:"Batter",      status:"no", source:"" },
+  { cat:"cricket", name:"Harmanpreet Kaur",   role:"Batter",      status:"no", source:"" },
+  { cat:"cricket", name:"Shafali Verma",      role:"Batter",      status:"no", source:"" },
+  { cat:"cricket", name:"Jemimah Rodrigues",  role:"Batter",      status:"no", source:"" },
+  { cat:"cricket", name:"Deepti Sharma",      role:"All-rounder", status:"no", source:"" },
+  { cat:"cricket", name:"Richa Ghosh",        role:"Wicketkeeper",status:"no", source:"" },
+  // --- Other Sports ---
+  { cat:"sports", name:"Neeraj Chopra",       role:"Javelin",    status:"no", source:"" },
+  { cat:"sports", name:"PV Sindhu",           role:"Badminton",  status:"no", source:"" },
+  { cat:"sports", name:"Saina Nehwal",        role:"Badminton",  status:"no", source:"" },
+  { cat:"sports", name:"Mary Kom",            role:"Boxing",     status:"no", source:"" },
+  { cat:"sports", name:"Lovlina Borgohain",   role:"Boxing",     status:"no", source:"" },
+  { cat:"sports", name:"Nikhat Zareen",       role:"Boxing",     status:"no", source:"" },
+  { cat:"sports", name:"Mirabai Chanu",       role:"Weightlifting",status:"no", source:"" },
+  { cat:"sports", name:"Bajrang Punia",       role:"Wrestling",  status:"no", source:"" },
+  { cat:"sports", name:"Ravi Kumar Dahiya",   role:"Wrestling",  status:"no", source:"" },
+  { cat:"sports", name:"Sakshi Malik",        role:"Wrestling",  status:"no", source:"" },
+  { cat:"sports", name:"Sunil Chhetri",       role:"Football",   status:"no", source:"" },
+  { cat:"sports", name:"Lakshya Sen",         role:"Badminton",  status:"no", source:"" },
+  { cat:"sports", name:"HS Prannoy",          role:"Badminton",  status:"no", source:"" },
+  { cat:"sports", name:"Satwiksairaj Rankireddy", role:"Badminton", status:"no", source:"" },
+  { cat:"sports", name:"Chirag Shetty",       role:"Badminton",  status:"no", source:"" },
+  { cat:"sports", name:"Manu Bhaker",         role:"Shooting",   status:"no", source:"" },
+  { cat:"sports", name:"Abhinav Bindra",      role:"Shooting",   status:"no", source:"" },
+  { cat:"sports", name:"Rohan Bopanna",       role:"Tennis",     status:"no", source:"" },
+  { cat:"sports", name:"Sumit Nagal",         role:"Tennis",     status:"no", source:"" },
+  { cat:"sports", name:"Gukesh D",            role:"Chess",      status:"no", source:"", wiki:"Gukesh Dommaraju" },
+  { cat:"sports", name:"Praggnanandhaa",      role:"Chess",      status:"no", source:"", wiki:"Rameshbabu Praggnanandhaa" },
+  { cat:"sports", name:"Viswanathan Anand",   role:"Chess",      status:"no", source:"" },
+  { cat:"sports", name:"Koneru Humpy",        role:"Chess",      status:"no", source:"" },
+  { cat:"sports", name:"PR Sreejesh",         role:"Hockey",     status:"no", source:"" },
+  { cat:"sports", name:"Harmanpreet Singh",   role:"Hockey",     status:"no", source:"" },
+  // --- Singers & Musicians ---
+  { cat:"music", name:"Arijit Singh",         role:"Singer",     status:"no", source:"" },
+  { cat:"music", name:"Shreya Ghoshal",       role:"Singer",     status:"no", source:"" },
+  { cat:"music", name:"Sonu Nigam",           role:"Singer",     status:"no", source:"" },
+  { cat:"music", name:"Neha Kakkar",          role:"Singer",     status:"no", source:"" },
+  { cat:"music", name:"Badshah",              role:"Rapper",     status:"no", source:"", wiki:"Badshah (rapper)" },
+  { cat:"music", name:"Yo Yo Honey Singh",    role:"Rapper",     status:"no", source:"" },
+  { cat:"music", name:"Diljit Dosanjh",       role:"Singer",     status:"no", source:"" },
+  { cat:"music", name:"AP Dhillon",           role:"Singer",     status:"no", source:"" },
+  { cat:"music", name:"Armaan Malik",         role:"Singer",     status:"no", source:"" },
+  { cat:"music", name:"Jubin Nautiyal",       role:"Singer",     status:"no", source:"" },
+  { cat:"music", name:"B Praak",              role:"Singer",     status:"no", source:"" },
+  { cat:"music", name:"Guru Randhawa",        role:"Singer",     status:"no", source:"" },
+  { cat:"music", name:"Sunidhi Chauhan",      role:"Singer",     status:"no", source:"" },
+  { cat:"music", name:"A. R. Rahman",         role:"Composer",   status:"no", source:"" },
+  { cat:"music", name:"Anirudh Ravichander",  role:"Composer",   status:"no", source:"" },
+  { cat:"music", name:"Devi Sri Prasad",      role:"Composer",   status:"no", source:"" },
+  { cat:"music", name:"Sid Sriram",           role:"Singer",     status:"no", source:"" },
+  { cat:"music", name:"Shankar Mahadevan",    role:"Singer",     status:"no", source:"" },
+  { cat:"music", name:"Vishal Dadlani",       role:"Singer",     status:"yes", source:"https://www.tribuneindia.com/news/lifestyle/sonakshi-sinha-comedians-and-other-bollywood-stars-rally-behind-wangchuk-as-hunger-strike-turns-critical/", note:"Said his heart is with the students, urged the govt to listen", noteHi:"कहा — दिल छात्रों के साथ है, सरकार उनकी सुने" },
+  { cat:"music", name:"Amit Trivedi",         role:"Composer",   status:"no", source:"" },
+  { cat:"music", name:"Pritam",               role:"Composer",   status:"no", source:"" },
+  { cat:"music", name:"King",                 role:"Rapper",     status:"no", source:"", wiki:"King (rapper)" },
+  { cat:"music", name:"Divine",               role:"Rapper",     status:"no", source:"", wiki:"Divine (rapper)" },
+  { cat:"music", name:"Raftaar",              role:"Rapper",     status:"no", source:"" },
+  { cat:"music", name:"Darshan Raval",        role:"Singer",     status:"no", source:"" },
+  // --- Comedians ---
+  { cat:"comedy", name:"Zakir Khan",          role:"Comedian",   status:"no", source:"", wiki:"Zakir Khan (comedian)" },
+  { cat:"comedy", name:"Vir Das",             role:"Comedian",   status:"no", source:"" },
+  { cat:"comedy", name:"Kapil Sharma",        role:"Comedian",   status:"no", source:"", wiki:"Kapil Sharma (comedian)" },
+  { cat:"comedy", name:"Anubhav Singh Bassi", role:"Comedian",   status:"no", source:"" },
+  { cat:"comedy", name:"Kenny Sebastian",     role:"Comedian",   status:"no", source:"" },
+  { cat:"comedy", name:"Kanan Gill",          role:"Comedian",   status:"no", source:"" },
+  { cat:"comedy", name:"Biswa Kalyan Rath",   role:"Comedian",   status:"no", source:"" },
+  { cat:"comedy", name:"Rahul Subramanian",   role:"Comedian",   status:"no", source:"" },
+  { cat:"comedy", name:"Abhishek Upmanyu",    role:"Comedian",   status:"no", source:"" },
+  { cat:"comedy", name:"Aakash Gupta",        role:"Comedian",   status:"no", source:"", wiki:"Aakash Gupta (comedian)" },
+  { cat:"comedy", name:"Sumukhi Suresh",      role:"Comedian",   status:"no", source:"" },
+  { cat:"comedy", name:"Aditi Mittal",        role:"Comedian",   status:"no", source:"" },
+  { cat:"comedy", name:"Munawar Faruqui",     role:"Comedian",   status:"yes", source:"https://www.tribuneindia.com/news/lifestyle/sonakshi-sinha-comedians-and-other-bollywood-stars-rally-behind-wangchuk-as-hunger-strike-turns-critical/", note:"Posted: he is fighting for the country, not against it", noteHi:"लिखा — वे देश के लिए लड़ रहे हैं, देश के ख़िलाफ़ नहीं" },
+  { cat:"comedy", name:"Kunal Kamra",         role:"Comedian",   status:"no", source:"" },
+  { cat:"comedy", name:"Varun Grover",        role:"Comedian",   status:"no", source:"", wiki:"Varun Grover (writer)" },
+  { cat:"comedy", name:"Sorabh Pant",         role:"Comedian",   status:"no", source:"" },
+  { cat:"comedy", name:"Atul Khatri",         role:"Comedian",   status:"no", source:"" },
+  { cat:"comedy", name:"Rahul Dua",           role:"Comedian",   status:"no", source:"" },
+  { cat:"comedy", name:"Harsh Gujral",        role:"Comedian",   status:"no", source:"" },
+  { cat:"comedy", name:"Bharti Singh",        role:"Comedian",   status:"no", source:"" },
+  { cat:"comedy", name:"Krushna Abhishek",    role:"Comedian",   status:"no", source:"" },
+  { cat:"comedy", name:"Sunil Grover",        role:"Comedian",   status:"no", source:"" },
+  { cat:"comedy", name:"Abish Mathew",        role:"Comedian",   status:"no", source:"" },
+  { cat:"comedy", name:"Rohan Joshi",         role:"Comedian",   status:"no", source:"" },
+  { cat:"comedy", name:"Sapan Verma",         role:"Comedian",   status:"no", source:"" },
+  // --- Influencers ---
+  { cat:"influencer", name:"Kusha Kapila",     role:"Creator",     status:"no", source:"" },
+  { cat:"influencer", name:"Prajakta Koli",    role:"Creator",     status:"no", source:"" },
+  { cat:"influencer", name:"Dolly Singh",      role:"Creator",     status:"no", source:"", wiki:"Dolly Singh (influencer)" },
+  { cat:"influencer", name:"Ankush Bahuguna",  role:"Creator",     status:"no", source:"" },
+  { cat:"influencer", name:"Komal Pandey",     role:"Fashion",     status:"no", source:"" },
+  { cat:"influencer", name:"Kritika Khurana",  role:"Fashion",     status:"no", source:"" },
+  { cat:"influencer", name:"Sejal Kumar",      role:"Creator",     status:"no", source:"" },
+  { cat:"influencer", name:"Masoom Minawala",  role:"Fashion",     status:"no", source:"" },
+  { cat:"influencer", name:"Jannat Zubair",    role:"Creator",     status:"no", source:"", wiki:"Jannat Zubair Rahmani" },
+  { cat:"influencer", name:"Avneet Kaur",      role:"Creator",     status:"no", source:"" },
+  { cat:"influencer", name:"Mr Faisu",         role:"Creator",     status:"no", source:"", wiki:"Faisal Shaikh (influencer)" },
+  { cat:"influencer", name:"Riyaz Aly",        role:"Creator",     status:"no", source:"" },
+  { cat:"influencer", name:"Awez Darbar",      role:"Dancer",      status:"no", source:"" },
+  { cat:"influencer", name:"Anushka Sen",      role:"Creator",     status:"no", source:"" },
+  { cat:"influencer", name:"Orry",             role:"Personality", status:"no", source:"", wiki:"Orhan Awatramani" },
+  { cat:"influencer", name:"Uorfi Javed",      role:"Personality", status:"no", source:"" },
+  { cat:"influencer", name:"Dolly Chaiwala",   role:"Personality", status:"no", source:"" },
+  { cat:"influencer", name:"Ruhee Dosani",     role:"Creator",     status:"no", source:"" },
+  { cat:"influencer", name:"Yashraj Mukhate",  role:"Music memes", status:"no", source:"" },
+  { cat:"influencer", name:"RJ Karishma",      role:"Creator",     status:"no", source:"" },
+  { cat:"influencer", name:"Saloni Gaur",      role:"Satirist",    status:"no", source:"" },
+  { cat:"influencer", name:"Shraddha Jain",    role:"Creator",     status:"no", source:"" },
+  { cat:"influencer", name:"Niharika NM",      role:"Creator",     status:"no", source:"" },
+  { cat:"influencer", name:"Srishti Dixit",    role:"Creator",     status:"no", source:"" },
+  { cat:"influencer", name:"Viraj Ghelani",    role:"Creator",     status:"no", source:"" },
+  // --- Business Leaders ---
+  { cat:"business", name:"Mukesh Ambani",       role:"Reliance",    status:"no", source:"" },
+  { cat:"business", name:"Gautam Adani",        role:"Adani Group", status:"no", source:"" },
+  { cat:"business", name:"Anand Mahindra",      role:"Mahindra",    status:"no", source:"" },
+  { cat:"business", name:"N. R. Narayana Murthy",role:"Infosys",    status:"no", source:"" },
+  { cat:"business", name:"Azim Premji",         role:"Wipro",       status:"no", source:"" },
+  { cat:"business", name:"Nithin Kamath",       role:"Zerodha",     status:"no", source:"" },
+  { cat:"business", name:"Kumar Mangalam Birla",role:"Aditya Birla",status:"no", source:"" },
+  { cat:"business", name:"Sunil Bharti Mittal", role:"Airtel",      status:"no", source:"" },
+  { cat:"business", name:"Shiv Nadar",          role:"HCL",         status:"no", source:"" },
+  { cat:"business", name:"Uday Kotak",          role:"Kotak Bank",  status:"no", source:"" },
+  { cat:"business", name:"Falguni Nayar",       role:"Nykaa",       status:"no", source:"" },
+  { cat:"business", name:"Kiran Mazumdar-Shaw", role:"Biocon",      status:"no", source:"" },
+  { cat:"business", name:"Ritesh Agarwal",      role:"OYO",         status:"no", source:"" },
+  { cat:"business", name:"Bhavish Aggarwal",    role:"Ola",         status:"no", source:"" },
+  { cat:"business", name:"Deepinder Goyal",     role:"Zomato",      status:"no", source:"" },
+  { cat:"business", name:"Aman Gupta",          role:"boAt",        status:"no", source:"" },
+  { cat:"business", name:"Namita Thapar",       role:"Emcure",      status:"no", source:"" },
+  { cat:"business", name:"Vineeta Singh",       role:"SUGAR",       status:"no", source:"" },
+  { cat:"business", name:"Peyush Bansal",       role:"Lenskart",    status:"no", source:"" },
+  { cat:"business", name:"Anupam Mittal",       role:"Shaadi.com",  status:"no", source:"" },
+  { cat:"business", name:"Ashneer Grover",      role:"Entrepreneur",status:"no", source:"" },
+  { cat:"business", name:"Ghazal Alagh",        role:"Mamaearth",   status:"no", source:"" },
+  { cat:"business", name:"Kunal Shah",          role:"CRED",        status:"no", source:"" },
+  { cat:"business", name:"Sachin Bansal",       role:"Entrepreneur",status:"no", source:"" },
+  { cat:"business", name:"Byju Raveendran",     role:"BYJU'S",      status:"no", source:"" },
+];
+/* ========================= END OF EDITABLE DATA ========================= */
+
+let LANG = localStorage.getItem("lang") || "en";
+let activeCat = "all";
+let certPerson = null;
+const t = k => I18N[LANG][k];
+const dispName = p => (LANG==="hi" && NAME_HI[p.name]) ? NAME_HI[p.name] : p.name;
+const dispRole = p => (LANG==="hi" && ROLE_HI[p.role]) ? ROLE_HI[p.role] : p.role;
+
+const COLORS = ["#f28b82","#fdd663","#81c995","#8ab4f8","#c58af9","#78d9ec","#fcad70","#ff8bcb"];
+function initials(n){ return n.split(" ").map(w=>w[0]).slice(0,2).join("").toUpperCase(); }
+function hashOf(n){ let h=0; for(const c of n) h=(h*31+c.charCodeAt(0))>>>0; return h; }
+
+function setLang(l){ LANG=l; localStorage.setItem("lang",l); applyLang(); }
+
+/* ---------- theme ---------- */
+let THEME = localStorage.getItem("theme") || "light";
+function applyTheme(){
+  document.documentElement.setAttribute("data-theme", THEME);
+  document.getElementById("themeBtn").textContent = THEME==="dark" ? "🌙" : "☀️";
+}
+function toggleTheme(){ THEME = THEME==="dark" ? "light" : "dark"; localStorage.setItem("theme", THEME); applyTheme(); }
+applyTheme();
+function applyLang(){
+  document.documentElement.lang = LANG;
+  document.getElementById("btnEn").classList.toggle("active", LANG==="en");
+  document.getElementById("btnHi").classList.toggle("active", LANG==="hi");
+  document.getElementById("heroTitle").innerHTML = t("heroTitle");
+  document.getElementById("heroTag").textContent = t("heroTag");
+  document.getElementById("heroMsg").textContent = t("heroMsg");
+  document.querySelectorAll("[data-i18n]").forEach(el=>{ el.textContent = t(el.dataset.i18n); });
+  document.getElementById("petName").placeholder = t("petName");
+  document.getElementById("petCity").placeholder = t("petCity");
+  document.getElementById("certName").placeholder = t("mName");
+  document.getElementById("petMsg").textContent = "";
+  renderTabs(); renderGrid(); renderAppreciation();
+}
+
+function renderAppreciation(){
+  const row = document.getElementById("apprRow");
+  const list = PEOPLE.filter(p=>p.status==="yes");
+  document.getElementById("appr").style.display = list.length ? "" : "none";
+  row.innerHTML = list.map(p=>{
+    const note = (LANG==="hi" ? (p.noteHi||p.note) : p.note) || "";
+    const col = COLORS[hashOf(p.name)%COLORS.length];
+    const src = p.source ? `<a href="${p.source}" target="_blank" rel="noopener">${t("apprSrc")}</a>` : "";
+    return `<div class="appr-card">
+      <div class="appr-photo" style="background:${col}22"><span style="color:${col}">${initials(p.name)}</span><img data-wiki="${(p.wiki||p.name).replace(/"/g,'&quot;')}" alt="${p.name}"><span class="badge yes">✓</span></div>
+      <div class="appr-body">
+        <div class="appr-name">${dispName(p)}</div>
+        <div class="appr-note">${note}</div>
+        ${src}
+        <button onclick="openModal(${PEOPLE.indexOf(p)})">${t("thankBtn")}</button>
+      </div>
+    </div>`;
+  }).join("");
+  observeImages();
+}
+
+function renderTabs(){
+  const el = document.getElementById("tabs");
+  el.innerHTML = `<button class="tab ${activeCat==='all'?'active':''}" onclick="setCat('all')">${t("all")}</button>` +
+    CATEGORIES.map(c=>`<button class="tab ${activeCat===c.id?'active':''}" onclick="setCat('${c.id}')">${c[LANG]}</button>`).join("");
+}
+function setCat(c){ activeCat=c; renderTabs(); renderGrid(); }
+
+function renderGrid(){
+  const g = document.getElementById("grid");
+  const list = PEOPLE.filter(p=>activeCat==="all"||p.cat===activeCat);
+  const stMeta = { yes:{cls:"yes",icon:"✓",key:"stYes"}, no:{cls:"no",icon:"✗",key:"stNo"}, unknown:{cls:"unknown",icon:"?",key:"stUnknown"} };
+  g.innerHTML = list.map(p=>{
+    const m = stMeta[p.status]||stMeta.unknown;
+    const src = p.source ? `<a class="src" href="${p.source}" target="_blank" rel="noopener">${t("source")}</a>` : "";
+    const idx = PEOPLE.indexOf(p);
+    const col = COLORS[hashOf(p.name)%COLORS.length];
+    return `<div class="card">
+      <div class="avatar" style="background:${col}22">
+        <span style="color:${col}">${initials(p.name)}</span>
+        <img data-wiki="${(p.wiki||p.name).replace(/"/g,'&quot;')}" alt="${p.name}">
+        <span class="badge ${m.cls}">${m.icon} ${t(m.key)}</span>
+      </div>
+      <div class="body">
+        <div class="name">${dispName(p)}</div>
+        <div class="role">${dispRole(p)}</div>
+        ${p.status==="yes" && (p.note||p.noteHi) ? `<div class="appr-note">${LANG==="hi" ? (p.noteHi||p.note) : p.note}</div>` : ""}
+        ${src}
+        <div class="pledge-btn"><button class="${p.status==="yes"?"thank":""}" onclick="openModal(${idx})">${p.status==="yes"?t("thankBtn"):t("pledgeBtn")}</button></div>
+      </div>
+    </div>`;
+  }).join("");
+  updateCounts();
+  observeImages();
+}
+
+function updateCounts(){
+  document.getElementById("cYes").textContent = PEOPLE.filter(p=>p.status==="yes").length;
+  document.getElementById("cNo").textContent  = PEOPLE.filter(p=>p.status==="no").length;
+  document.getElementById("cPledge").textContent = localStorage.getItem("pledgeCount")||0;
+}
+
+/* ---------- share the movement ---------- */
+async function shareSite(btn){
+  const data = { title: document.title, text: t("shareText"), url: location.href };
+  if(navigator.share){ try{ await navigator.share(data); }catch(e){} }
+  else{
+    try{ await navigator.clipboard.writeText(t("shareText")+" "+location.href); }catch(e){}
+    const old = btn.textContent; btn.textContent = t("copied");
+    setTimeout(()=>{ btn.textContent = t("ctaShare"); }, 2200);
+  }
+}
+
+/* ---------- photos (lazy-loaded from Wikipedia, freely licensed) ---------- */
+const imgCache = {};
+const imgObserver = new IntersectionObserver(entries=>{
+  for(const e of entries){
+    if(!e.isIntersecting) continue;
+    imgObserver.unobserve(e.target);
+    loadWikiImage(e.target);
+  }
+},{rootMargin:"300px"});
+
+function observeImages(){
+  document.querySelectorAll("img[data-wiki]:not([src])").forEach(img=>imgObserver.observe(img));
+}
+
+async function loadWikiImage(img){
+  const title = img.dataset.wiki;
+  try{
+    if(!(title in imgCache)){
+      const r = await fetch("https://en.wikipedia.org/api/rest_v1/page/summary/"+encodeURIComponent(title));
+      const j = r.ok ? await r.json() : {};
+      imgCache[title] = (j.thumbnail && j.thumbnail.source) ? j.thumbnail.source : null;
+    }
+    if(imgCache[title]){
+      img.src = imgCache[title];
+      img.onload = ()=>img.classList.add("loaded");
+      img.onerror = ()=>img.remove();
+    } else img.remove();
+  }catch(e){ img.remove(); }
+}
+
+/* ---------- petition ---------- */
+function signPetition(){
+  const n = document.getElementById("petName").value.trim();
+  if(!n){ document.getElementById("petMsg").textContent = t("petErr"); return; }
+  const c = (parseInt(localStorage.getItem("pledgeCount")||"0")+1);
+  localStorage.setItem("pledgeCount", c);
+  document.getElementById("petMsg").textContent = t("petThanks")(n, c);
+  document.getElementById("certName").value = n;
+  updateCounts();
+}
+
+/* ---------- certificate ---------- */
+function openModal(idx){
+  const p = PEOPLE[idx];
+  const cat = CATEGORIES.find(c=>c.id===p.cat)||{};
+  certPerson = { name:dispName(p), mode: p.status==="yes" ? "thanks" : "pledge",
+    verb: LANG==="hi" ? (cat.verbHi||"का समर्थन नहीं करूँगा/करूँगी:") : (cat.verbEn||"support") };
+  document.getElementById("modalTitle").textContent = (certPerson.mode==="thanks" ? t("mTitleThanks") : t("mTitle"))(dispName(p));
+  document.getElementById("certCanvas").style.display="none";
+  document.getElementById("dlBtn").style.display="none";
+  document.getElementById("shareBtn").style.display="none";
+  document.getElementById("modal").classList.add("open");
+}
+function closeModal(){ document.getElementById("modal").classList.remove("open"); }
+
+const CFONT = "'Inter','Noto Sans Devanagari','Segoe UI',sans-serif";
+function makeCert(){
+  const user = document.getElementById("certName").value.trim() || t("anon");
+  const cv = document.getElementById("certCanvas"), x = cv.getContext("2d");
+  const W=1080,H=1080;
+  if(certPerson.mode==="thanks"){ makeThanksCert(x, W, H, user, cv); return; }
+  const bg = x.createLinearGradient(0,0,W,H);
+  bg.addColorStop(0,"#101c33"); bg.addColorStop(1,"#131314");
+  x.fillStyle=bg; x.fillRect(0,0,W,H);
+  x.strokeStyle="#8ab4f8"; x.lineWidth=10; x.strokeRect(30,30,W-60,H-60);
+  x.textAlign="center"; x.fillStyle="#8ab4f8";
+  x.font="800 44px "+CFONT;
+  x.fillText(t("certHead"), W/2, 150);
+  x.fillStyle="#9aa0a6"; x.font="400 28px "+CFONT;
+  x.fillText(t("certSub"), W/2, 202);
+  x.fillStyle="#e8eaed"; x.font="800 52px "+CFONT;
+  x.fillText(t("certI")(user), W/2, 340);
+  x.font="400 38px "+CFONT;
+  wrapText(x, t("certPledge")(certPerson.verb), W/2, 432, 900, 54);
+  x.fillStyle="#8ab4f8"; x.font="800 60px "+CFONT;
+  x.fillText(certPerson.name, W/2, 575);
+  x.fillStyle="#e8eaed"; x.font="400 38px "+CFONT;
+  wrapText(x, t("certUntil"), W/2, 665, 900, 54);
+  x.fillStyle="#81c995"; x.font="800 42px "+CFONT;
+  x.fillText(t("certMotto"), W/2, 805);
+  x.fillStyle="#9aa0a6"; x.font="400 26px "+CFONT;
+  x.fillText(new Date().toLocaleDateString(LANG==="hi"?"hi-IN":"en-IN",{day:"numeric",month:"long",year:"numeric"}), W/2, 890);
+  x.fillText(t("certTag"), W/2, 940);
+  cv.style.display="block";
+  document.getElementById("dlBtn").style.display="block";
+  if(navigator.share) document.getElementById("shareBtn").style.display="block";
+}
+function makeThanksCert(x, W, H, user, cv){
+  const bg = x.createLinearGradient(0,0,W,H);
+  bg.addColorStop(0,"#0f2618"); bg.addColorStop(1,"#131314");
+  x.fillStyle=bg; x.fillRect(0,0,W,H);
+  x.strokeStyle="#81c995"; x.lineWidth=10; x.strokeRect(30,30,W-60,H-60);
+  x.textAlign="center"; x.fillStyle="#81c995";
+  x.font="800 42px "+CFONT;
+  x.fillText(t("certTHead"), W/2, 150);
+  x.fillStyle="#9aa0a6"; x.font="400 28px "+CFONT;
+  x.fillText(t("certSub"), W/2, 202);
+  x.fillStyle="#e8eaed"; x.font="400 36px "+CFONT;
+  x.fillText(t("certTPresented"), W/2, 350);
+  x.fillStyle="#81c995"; x.font="800 66px "+CFONT;
+  x.fillText(certPerson.name, W/2, 460);
+  x.fillStyle="#e8eaed"; x.font="400 38px "+CFONT;
+  wrapText(x, t("certTFor"), W/2, 560, 900, 54);
+  x.fillStyle="#fdd663"; x.font="800 40px "+CFONT;
+  wrapText(x, t("certTMotto"), W/2, 700, 940, 54);
+  x.fillStyle="#9aa0a6"; x.font="400 27px "+CFONT;
+  x.fillText(t("certTFrom")(user), W/2, 840);
+  x.font="400 25px "+CFONT;
+  x.fillText(new Date().toLocaleDateString(LANG==="hi"?"hi-IN":"en-IN",{day:"numeric",month:"long",year:"numeric"}), W/2, 900);
+  x.fillText(t("certTag"), W/2, 945);
+  cv.style.display="block";
+  document.getElementById("dlBtn").style.display="block";
+  if(navigator.share) document.getElementById("shareBtn").style.display="block";
+}
+
+function wrapText(x, text, cx, y, maxW, lh){
+  const words = text.split(" "); let line="", yy=y;
+  for(const w of words){
+    const tst = line ? line+" "+w : w;
+    if(x.measureText(tst).width > maxW){ x.fillText(line,cx,yy); line=w; yy+=lh; }
+    else line=tst;
+  }
+  x.fillText(line,cx,yy);
+}
+function downloadCert(){
+  const a=document.createElement("a");
+  a.download="pledge-certificate.png";
+  a.href=document.getElementById("certCanvas").toDataURL("image/png");
+  a.click();
+}
+async function shareCert(){
+  const cv=document.getElementById("certCanvas");
+  cv.toBlob(async b=>{
+    const f=new File([b],"pledge.png",{type:"image/png"});
+    try{ await navigator.share({files:[f], title:"My Pledge", text:t("certTag")}); }
+    catch(e){}
+  });
+}
+document.getElementById("modal").addEventListener("click",e=>{ if(e.target.id==="modal") closeModal(); });
+
+applyLang();
+</script>
+</body>
+</html>
