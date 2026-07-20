@@ -40,6 +40,7 @@
   body{background:var(--bg); color:var(--text); line-height:1.55;
     font-family:"Inter","Noto Sans Devanagari","Segoe UI",system-ui,sans-serif;
     -webkit-font-smoothing:antialiased;}
+  html, body{overflow-x:clip;}
   body::before{content:""; position:fixed; inset:0; z-index:-1;
     background:radial-gradient(900px 420px at 50% -80px, var(--glow), transparent 70%);}
   body::after{content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
@@ -60,6 +61,7 @@
   .lang-toggle button.active{background:var(--primary); color:var(--on-primary);}
   .nav-link{color:var(--text); font-size:.87rem; font-weight:600; text-decoration:none; white-space:nowrap;}
   .nav-link:hover{color:var(--green); text-decoration:none;}
+  #themeBtn{background:transparent; border:1px solid var(--outline); border-radius:999px; width:38px; height:38px; flex:0 0 auto; cursor:pointer; font-size:1.05rem; line-height:1; color:var(--text);}
   section.appr{margin-bottom:2.5rem; scroll-margin-top:70px;}
 
   /* ---------- hero ---------- */
@@ -157,6 +159,19 @@
     transition:opacity .25s, transform .25s;}
   #toTop.show{opacity:1; pointer-events:auto; transform:translateY(0);}
   #toTop:hover{filter:brightness(1.08);}
+
+  /* mobile */
+  @media (max-width:520px){
+    .wrap{padding:0 .85rem;}
+    .topbar-in{gap:.4rem;}
+    .topbar-in > div{gap:.45rem !important;}
+    .brand{font-size:.88rem; gap:.3rem;}
+    .nav-link{font-size:.78rem;}
+    #themeBtn{width:33px; height:33px; font-size:.92rem;}
+    .lang-toggle button{padding:.32rem .6rem; font-size:.76rem;}
+    .counts{gap:1.5rem;}
+    .hero{padding-top:3.2rem;}
+  }
 </style>
 </head>
 <body>
@@ -166,7 +181,7 @@
     <div class="brand"><span class="fist"></span> <span data-i18n="brand">StandWithStudents</span><span class="dot">.</span></div>
     <div style="display:flex; align-items:center; gap:.9rem;">
       <a href="#appr" class="nav-link" data-i18n="apprLink"></a>
-      <button id="themeBtn" onclick="toggleTheme()" title="Theme" style="background:transparent; border:1px solid var(--outline); border-radius:999px; width:38px; height:38px; cursor:pointer; font-size:1.05rem; line-height:1; color:var(--text);">🌙</button>
+      <button id="themeBtn" onclick="toggleTheme()" title="Theme">🌙</button>
       <div class="lang-toggle">
         <button id="btnEn" onclick="setLang('en')">EN</button>
         <button id="btnHi" onclick="setLang('hi')">हिंदी</button>
